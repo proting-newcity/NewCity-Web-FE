@@ -10,6 +10,13 @@ body {
     color: white;
 }
 
+#loginMessage {
+    color: red;
+    margin-top: 0px;
+    margin-bottom: -10px; 
+    font-size: 0.9rem; 
+}
+
 .box-area {
     display: flex;
     flex-direction: row;
