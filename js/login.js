@@ -18,8 +18,10 @@ function authenticateUser() {
             const user = users.find(user => user.username === username && user.password === password);
 
             if (user) {
-                loginMessage.innerHTML = "<p class='text-success'>Login successful!</p>";
+                window.location.href = 'Table.html';
             } else {
+                document.getElementById('loginForm').classList.remove('mb-5');
+                document.getElementById('loginForm').classList.add('mb-2');
                 loginMessage.innerHTML = "<p class='text-danger'>Invalid username or password</p>";
             }
         }
