@@ -34,7 +34,7 @@ function authenticateUser() {
 
   // jQuery AJAX request
   $.ajax({
-    url: "js/user.json",
+    url: "js/auth.json",
     method: "GET",
     contentType: "application/json",
     success: function (data) {
@@ -63,7 +63,7 @@ function authenticateUser() {
 function checkLogin() {
   const username = getCookie("username");
   if (username) {
-    window.location.href = "Table.html";
+    window.location.href = "listBerita.html";
   }
 }
 

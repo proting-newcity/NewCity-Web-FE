@@ -3,7 +3,7 @@ $(document).ready(function () {
     async function loadData() {
         try {
             index = 0;
-            const response = await fetch('js/report.json');
+            const response = await fetch('../js/report.json');
             const data = await response.json();
 
             // Ambil template card dari HTML
@@ -33,7 +33,7 @@ $(document).ready(function () {
     }
     loadData();
     function loadColumn2Manually(index) {
-        $.getJSON('js/report.json', function (data) {
+        $.getJSON('../js/report.json', function (data) {
             const selectedItem = data.report[index];
             $('#col2-title').text(selectedItem.title);
             $('#col2-description').text(selectedItem.description);
