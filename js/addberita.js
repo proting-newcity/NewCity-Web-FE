@@ -88,6 +88,19 @@ $(document).ready(function() {
         };
     }
 
+    function downloadJson(data, filename = 'data.json') {
+        const jsonStr = JSON.stringify(data, null, 2);
+        const blob = new Blob([jsonStr], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    }
+
     $('.publish-button').click(function() {
         updateDetailsTitle();
         updateModifiedDate();
@@ -95,17 +108,6 @@ $(document).ready(function() {
         const jsonData = collectData();
         console.log(JSON.stringify(jsonData, null, 2));
 
-        $.ajax({
-            url: 'http://localhost:3000/save-json',
-            type: 'POST',
-            contentType: 'application/json',
-            data: JSON.stringify(jsonData),
-            success: function(response) {
-                console.log(response);
-            },
-            error: function(xhr, status, error) {
-                console.error('Error saving data:', error);
-            }
-        });
+        downloadJson(jsonData);
     });
 });
