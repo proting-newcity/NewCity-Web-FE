@@ -1,0 +1,114 @@
+body {
+    margin: 0;
+    overflow: hidden; 
+  }
+
+  .navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+}
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 5%;
+    padding-top: 60px;
+    z-index: 1;
+  }
+
+  .sidebar a {
+    margin-top: 20px; 
+  }
+
+  .form-container-wrapper {
+    position: fixed;
+    top: 70px; 
+    left: 5%; 
+    right: 0;
+    bottom: 0; 
+    padding: 20px;
+    background-color: #f8f9fa;
+  }
+
+  .form-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    height: 90%; 
+  }
+
+  .form-left, .form-right {
+    width: 594px;
+    height: 90px;
+  }
+
+  .form-left {
+    padding-top: 70px;
+    padding-left: 100px;
+  }
+
+  .form-right {
+    padding-top: 60px;
+  }
+
+  .form-input-group input.form-control, .form-input-group select.form-select {
+    height: 50px; 
+    width: 530px;
+    font-size: 16px; 
+    padding: 10px; 
+    border-radius: 8px; 
+}
+
+
+  .upload-photo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #3A5A40;
+    border-radius: 50%;
+    width: 300px; 
+    height: 300px; 
+    color: #3A5A40;
+    font-weight: bold;
+    margin-bottom: 20px;
+    cursor: pointer;
+  }
+
+
+  .form-input-group {
+    height: 70px;
+    margin-bottom: 15px;
+  }
+
+  .form-input-group label {
+    font-weight: 600;
+  }
+
+  .form-buttons {
+    display: flex;
+    justify-content: flex-end;
+    height: 50px;
+    gap: 10px;
+    margin-top: 10px; 
+    margin-right: 100px;
+  }
+
+
+  .btn-cancel {
+    background-color: #ECEBE6;
+    color: #3A5A40;
+    border: none;
+    width: 80px;
+  }
+
+  .btn-save {
+    background-color: #3A5A40;
+    color: white;
+    border: none;
+    width: 104px;
+  }
