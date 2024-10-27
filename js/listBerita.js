@@ -62,4 +62,41 @@ document.addEventListener('DOMContentLoaded', function () {
           window.location.href = `edit-akun.html?id=${accountId}`; // Redirect to edit page with account ID
       }
   });
+
+  // function showberita() {
+  //   const xhr = new XMLHttpRequest();
+  //   xhr.open("GET", "berita.json", true);
+  //   xhr.setRequestHeader("Content-Type", "application/json");
+
+  //   xhr.onreadystatechange = function () {
+  //     if (xhr.readyState === 4) {
+  //       if (xhr.status === 200) {
+  //         const berita = JSON.parse(xhr.responseText).berita;
+  //         const tableBody = document.querySelector('tbody');
+  //         let html = '';
+  //         berita.forEach((item, index) => {
+  //           html += `
+  //           <tr>
+  //             <td>${index + 1}</td>
+  //             <td>${item.judul}</td>
+  //             <td>${item.kategori}</td>
+  //             <td>${item.editor}</td>
+  //             <td>${item.tanggal}</td>
+  //             <td>${item.status}</td>
+  //             <td>
+  //               <i class="fas fa-pencil-alt" style="cursor:pointer;"></i>
+  //               <i class="fas fa-trash-alt" style="cursor:pointer; margin-left: 10px;"></i>
+  //             </td>
+  //           </tr>`;
+  //         });
+  //         tableBody.innerHTML = html;
+  //       } else {
+  //         console.error('Gagal mengambil data dari berita.json');
+  //       }
+  //     }
+  //   };
+  //   xhr.send();
+  // }
+
+  // showberita(); 
 });
