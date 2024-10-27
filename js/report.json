@@ -6,7 +6,8 @@
             "category": "Infrastruktur Jalan atau Perbaikan Jalan",
             "location": "Kosan Winter Aespa, Ciganitri",
             "date": "21 Agustus 2024",
-            "image": "images/Our-Team.png"
+            "image": "images/Our-Team.png",
+            "confirmation": "images/Confirmation-NotConfirmed.png"
         },
         {
             "title": "Lampu Jalan Mati",
@@ -14,7 +15,8 @@
             "category": "Fasilitas Umum",
             "location": "Cipagalo, Kec. Bojongsoang, Kabupaten Bandung, Jawa Barat",
             "date": "19 Juni 2024",
-            "image": "images/Terima-Keshi.png"
+            "image": "images/Terima-Keshi.png",
+            "confirmation": "images/Confirmation-NotConfirmed.png"
         },
         {
             "title": "Sampah Menumpuk",
@@ -22,7 +24,8 @@
             "category": "Kebersihan dan Lingkungan",
             "location": "Sukabirus",
             "date": "9 Mei 2024",
-            "image": "images/Gojiang.png"
+            "image": "images/Gojiang.png",
+            "confirmation": "images/Confirmation-Accepted.png"
         },
         {
             "title": "Trotoar Rusak",
@@ -30,7 +33,8 @@
             "category": "Infrastruktur Jalan.",
             "location": "Telkom University",
             "date": "11 Maret 2024",
-            "image": "images/World-If.jpg"
+            "image": "images/World-If.jpg",
+            "confirmation": "images/Confirmation-Rejected.png"
         },
         {
             "title": "Saluran Air Mampet",
@@ -38,7 +42,8 @@
             "category": "Sarana dan Prasarana",
             "location": "Sukabirus",
             "date": "12 Januari 2024",
-            "image": "images/Alamak-Winterku.jpg"
+            "image": "images/Alamak-Winterku.jpg",
+            "confirmation": "images/Confirmation-Accepted.png"
         }
     ]
 }
