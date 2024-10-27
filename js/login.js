@@ -18,7 +18,7 @@ function authenticateUser() {
             const user = users.find(user => user.username === username && user.password === password);
 
             if (user) {
-                window.location.href = 'Table.html';
+                window.location.href = 'listBerita.html';
             } else {
                 document.getElementById('loginForm').classList.remove('mb-5');
                 document.getElementById('loginForm').classList.add('mb-2');
