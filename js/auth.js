@@ -14,6 +14,19 @@ function getCookie(name) {
   return null;
 }
 
+// listener buat trigger login
+document.getElementById("input-username").addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+      authenticateUser();
+    }
+  });
+
+document.getElementById("input-password").addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+      authenticateUser();
+    }
+  });
+
 function authenticateUser() {
   const username = $("#input-username").val();
   const password = $("#input-password").val();
@@ -26,19 +39,23 @@ function authenticateUser() {
     contentType: "application/json",
     success: function (data) {
       // Verif user
-      const user = data.users.find(user => user.username === username && user.password === password);
+      const user = data.users.find(
+        (user) => user.username === username && user.password === password
+      );
 
       if (user) {
         setCookie("username", username, 7); // Set exp cookie 7 haru
         window.location.href = "Table.html";
       } else {
         $("#loginForm").removeClass("mb-5").addClass("mb-2");
-        loginMessage.html("<p class='text-danger'>Invalid username or password</p>");
+        loginMessage.html(
+          "<p class='text-danger'>Invalid username or password</p>"
+        );
       }
     },
     error: function () {
       loginMessage.html("<p class='text-danger'>Error loading user data</p>");
-    }
+    },
   });
 }
 
