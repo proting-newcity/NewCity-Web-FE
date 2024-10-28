@@ -62,7 +62,7 @@ body {
 }
 
 .details {
-    
+    margin-top: 60px;
     flex: 0 0 30%;
     background-color: #DEE5DC;
     border-radius: 8px;
