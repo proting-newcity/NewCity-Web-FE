@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
               row.style.display = 'none'; // sembunyikan baris
           }
       });
-  });
+  }); 
 
   // 3. Navigasi halaman tabel
   let currentPage = 1;
@@ -40,63 +40,82 @@ document.addEventListener('DOMContentLoaded', function () {
   });
   
   function updatePageNumber() {
-    document.getElementById("page-number").innerText = `${currentPage} dari ${totalPages}`;
+    document.getElementById("page-number").innerText = '${currentPage} dari ${totalPages}';
   }
 
   // 4. Delete and Edit actions for each account row
   const tableBody = document.querySelector('tbody');
+  function loadBerita() {
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", "../js/berita.json", true);
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            const berita = JSON.parse(xhr.responseText).berita;
 
-  tableBody.addEventListener('click', function (event) {
-      // Check if a delete icon was clicked
-      if (event.target.classList.contains('fa-trash-alt')) {
-          const row = event.target.closest('tr');
-          row.remove(); // Remove the row from the DOM
-          // If managing data in an array, you can remove it from the array here
-      }
+            // Ambil daftar indeks yang dihapus dari localStorage
+            const deletedIndexes = JSON.parse(localStorage.getItem('deletedIndexes')) || [];
 
-      // Check if an edit icon was clicked
-      if (event.target.classList.contains('fa-pen')) {
-          const row = event.target.closest('tr');
-          // Assuming each row has an ID or unique identifier for editing
-          const accountId = row.querySelector('td:nth-child(2)').textContent; // example using NIP column
-          window.location.href = `edit-akun.html?id=${accountId}`; // Redirect to edit page with account ID
-      }
-  });
+            // Filter berita untuk menghapus yang ada di deletedIndexes
+            const visibleBerita = berita.filter((item, index) => !deletedIndexes.includes(index));
 
-  // function showberita() {
-  //   const xhr = new XMLHttpRequest();
-  //   xhr.open("GET", "berita.json", true);
-  //   xhr.setRequestHeader("Content-Type", "application/json");
+            // Render data yang tidak dihapus ke tabel
+            renderTable(visibleBerita);
+        }
+    };
+    xhr.send();
+}
 
-  //   xhr.onreadystatechange = function () {
-  //     if (xhr.readyState === 4) {
-  //       if (xhr.status === 200) {
-  //         const berita = JSON.parse(xhr.responseText).berita;
-  //         const tableBody = document.querySelector('tbody');
-  //         let html = '';
-  //         berita.forEach((item, index) => {
-  //           html += `
-  //           <tr>
-  //             <td>${index + 1}</td>
-  //             <td>${item.judul}</td>
-  //             <td>${item.kategori}</td>
-  //             <td>${item.editor}</td>
-  //             <td>${item.tanggal}</td>
-  //             <td>${item.status}</td>
-  //             <td>
-  //               <i class="fas fa-pencil-alt" style="cursor:pointer;"></i>
-  //               <i class="fas fa-trash-alt" style="cursor:pointer; margin-left: 10px;"></i>
-  //             </td>
-  //           </tr>`;
-  //         });
-  //         tableBody.innerHTML = html;
-  //       } else {
-  //         console.error('Gagal mengambil data dari berita.json');
-  //       }
-  //     }
-  //   };
-  //   xhr.send();
-  // }
+function renderTable(berita) {
+    let html = '';
+    berita.forEach((item, index) => {
+        html += `
+            <tr>
+                <td>${index + 1}</td>
+                <td>${item.judul}</td>
+                <td>${item.kategori}</td>
+                <td>${item.editor}</td>
+                <td>${item.tanggal}</td>
+                <td>${item.status}</td>
+                <td>
+                    <i class="fas fa-pen" style="cursor:pointer;"></i>
+                    <i class="fas fa-trash-alt" style="cursor:pointer; margin-left: 10px;" data-index="${index}"></i>
+                </td>
+            </tr>`;
+    });
+    tableBody.innerHTML = html;
+}
 
-  // showberita(); 
+tableBody.addEventListener('click', function (event) {
+    if (event.target.classList.contains('fa-trash-alt')) {
+        const index = parseInt(event.target.getAttribute('data-index'), 10);
+
+        // Ambil daftar indeks yang dihapus dari localStorage, lalu tambahkan indeks baru
+        const deletedIndexes = JSON.parse(localStorage.getItem('deletedIndexes')) || [];
+        deletedIndexes.push(index);
+        localStorage.setItem('deletedIndexes', JSON.stringify(deletedIndexes));
+
+        // Muat ulang data untuk memperbarui tampilan
+        loadBerita();
+    }
 });
+
+// Muat data berita ketika halaman dimuat
+loadBerita();  
+});
+
+function deleteBerita(index){
+  $.ajax({
+    url: 'js/berita.json',
+    type: 'DELETE',
+    data: JSON.stringify({ index: index }), // Contoh: Menghapus elemen pada indeks ke-1
+    contentType: 'application/json',
+    success: function(response) {
+        console.log(response.status); // Output: "Data deleted successfully"
+    },
+    error: function(error) {
+        console.error('Error:', error);
+    }
+});
+
+
+}
