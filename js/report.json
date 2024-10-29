@@ -1,0 +1,49 @@
+{
+    "report": [
+        {
+            "title": "Jalan Berlubang",
+            "description": "Saya mau melaporkan ada jalan berlubang di [nama jalan/lokasi], tepatnya di [detail lokasi]. Lubangnya cukup berbahaya buat pengguna jalan, apalagi kalau malam karena penerangannya kurang.Semoga bisa segera diperbaiki demi keamanan bersama. Terimakasih.",
+            "category": "Infrastruktur Jalan atau Perbaikan Jalan",
+            "location": "Kosan Winter Aespa, Ciganitri",
+            "date": "21 Agustus 2024",
+            "image": "../images/Our-Team.png",
+            "confirmation": "../images/Confirmation-NotConfirmed.png"
+        },
+        {
+            "title": "Lampu Jalan Mati",
+            "description": "Saya mau melaporkan kalau lampu jalan di [nama jalan/lokasi], tepatnya di [detail lokasi], sudah beberapa hari mati. Kondisi ini bikin jalan jadi gelap dan rawan kecelakaan. Mohon bantuannya untuk diperbaiki secepatnya. Terima kasih.",
+            "category": "Fasilitas Umum",
+            "location": "Cipagalo, Kec. Bojongsoang, Kabupaten Bandung, Jawa Barat",
+            "date": "19 Juni 2024",
+            "image": "../images/Terima-Keshi.png",
+            "confirmation": "../images/Confirmation-NotConfirmed.png"
+        },
+        {
+            "title": "Sampah Menumpuk",
+            "description": "Saya ingin melaporkan ada tumpukan sampah yang belum diangkut di [nama jalan/lokasi], tepatnya di [detail lokasi]. Sampahnya sudah menumpuk cukup lama dan mulai mengganggu lingkungan sekitar. Mohon bantuan untuk segera diangkut. Terima kasih.",
+            "category": "Kebersihan dan Lingkungan",
+            "location": "Sukabirus",
+            "date": "9 Mei 2024",
+            "image": "../images/Gojiang.png",
+            "confirmation": "../images/Confirmation-Accepted.png"
+        },
+        {
+            "title": "Trotoar Rusak",
+            "description": "Saya mau melaporkan trotoar yang rusak di [nama jalan/lokasi], dekat [detail lokasi]. Kondisi trotoarnya pecah-pecah dan bikin pejalan kaki susah lewat. Semoga bisa segera diperbaiki. Terima kasih sebelumnya.",
+            "category": "Infrastruktur Jalan.",
+            "location": "Telkom University",
+            "date": "11 Maret 2024",
+            "image": "../images/World-If.jpg",
+            "confirmation": "../images/Confirmation-Rejected.png"
+        },
+        {
+            "title": "Saluran Air Mampet",
+            "description": "Saya mau melaporkan ada saluran air yang mampet di [nama jalan/lokasi], di sekitar [detail lokasi]. Akibatnya, jalan sering tergenang saat hujan. Mohon segera diperiksa dan diperbaiki. Terima kasih.",
+            "category": "Sarana dan Prasarana",
+            "location": "Sukabirus",
+            "date": "12 Januari 2024",
+            "image": "../images/Alamak-Winterku.jpg",
+            "confirmation": "../images/Confirmation-Accepted.png"
+        }
+    ]
+}

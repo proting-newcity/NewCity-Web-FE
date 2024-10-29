@@ -1,0 +1,116 @@
+#column-1 {
+  height: 100vh;
+  overflow-y: auto;
+  border-radius: 8px;
+  width: 412px;
+}
+
+#column-2 {
+  background-color: #f9f9f9;
+  height: 100vh;
+  overflow-y: auto;
+  border: 1.14px solid#3a5a40;
+  border-radius: 8px;
+  width: 866px;
+}
+
+.dot {
+  height: 45px;
+  width: 45px;
+  background-color: #3a5a40;
+  border-radius: 50%;
+  text-align: match-parent;
+  display: inline-block;
+}
+
+#card-list {
+  background-color: #f3feee;
+  border: 1.14px solid#3a5a40;
+  border-radius: 12px;
+  padding: 18px;
+  margin: 24px;
+  cursor: pointer;
+}
+
+#search-bar {
+  padding-left: 24px;
+  align-items: center;
+  background-color: #e5e3dc;
+  border-radius: 20px;
+  height: 55px;
+}
+
+/* Media Query for very small screens */
+@media (max-width: 1500px) {
+  #column-1,
+  #column-2 {
+    min-width: 300px; /* Allow columns to reduce further if needed */
+  }
+
+  /* Enable horizontal scrolling on the row container */
+  .row {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+  }
+}
+/* Card Container */
+.card-container {
+  background-color: #f3feee; /* Light background color */
+  border-radius: 12px;
+  /* overflow: hidden; */
+  max-width: 100%;
+}
+
+/* Card Content Styling */
+.card-content {
+  padding: 24px;
+  color: #272727;
+}
+
+.card-title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.card-description {
+  font-size: 16px;
+  margin-top: 10px;
+  line-height: 1.5;
+}
+
+.card-info-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+.card-info {
+  font-size: 16px;
+}
+
+/* Card Buttons Styling */
+.card-buttons {
+  display: flex;
+  justify-content: end;
+}
+
+.btn-cancel,
+.btn-confirm {
+  padding: 10px 20px;
+  margin: 4px;
+  font-size: 16px;
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+}
+
+.btn-cancel {
+  background-color: transparent;
+  color: #3a5a40;
+  border: 1px solid #3a5a40;
+}
+
+.btn-confirm {
+  background-color: #3a5a40;
+  color: white;
+}
