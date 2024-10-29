@@ -1,23 +1,51 @@
-document.addEventListener('DOMContentLoaded', function () {
-  // 1. Navigasi ke halaman "Tambah Berita"
-  const tambahBeritaButton = document.querySelector('.btn.btn-success.d-flex.align-items-center');
-  tambahBeritaButton.addEventListener('click', function () {
-      window.location.href = 'tambah-berita.html';
-  });
+$(document).ready(function () {
+  let akunData = []; // Holds all accounts data globally
+  let currentPage = 1;
+  const rowsPerPage = 5;
 
-  // 2. Fungsi pencarian di tabel
-  const searchInput = document.querySelector('.form-control[type="search"]');
-  searchInput.addEventListener('input', function () {
-      const searchText = searchInput.value.toLowerCase();
-      const tableRows = document.querySelectorAll('tbody tr');
-      
-      tableRows.forEach(row => {
-          const rowText = row.textContent.toLowerCase();
-          if (rowText.includes(searchText)) {
-              row.style.display = ''; // tampilkan baris
-          } else {
-              row.style.display = 'none'; // sembunyikan baris
+  // Load data from listAkun.json
+  function loadData() {
+      const xhr = new XMLHttpRequest();
+      xhr.open("GET", "listAkun.json", true);
+      xhr.setRequestHeader("Content-Type", "application/json");
+
+      xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4) {
+              if (xhr.status === 200) {
+                  try {
+                      const data = JSON.parse(xhr.responseText);
+                      akunData = data.Akun || []; // Store globally for pagination and search
+                      renderTable(); // Render the table after data load
+                      updatePageInfo(akunData.length); // Update page info
+                  } catch (error) {
+                      console.error("Error parsing JSON:", error);
+                      alert("Failed to load data from listAkun.json");
+                  }
+              } else {
+                  console.error("Request Failed:", xhr.status, xhr.statusText);
+                  alert("Gagal memuat data dari listAkun.json");
+              }
           }
+      };
+
+      xhr.send();
+  }
+
+  // Render table with pagination
+  function renderTable(data = akunData) {
+      const tableBody = $("#tableBody");
+      tableBody.empty(); // Clear existing rows
+
+      const start = (currentPage - 1) * rowsPerPage;
+      const paginatedData = data.slice(start, start + rowsPerPage); // Paginate
+
+      paginatedData.forEach(akun => {
+          const row = `<tr>
+              <td>${akun.username}</td>
+              <td>${akun.password}</td>
+              <td>${akun.role}</td>
+          </tr>`;
+          tableBody.append(row);
       });
   }); 
 

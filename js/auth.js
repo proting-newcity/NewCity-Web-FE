@@ -34,7 +34,7 @@ function authenticateUser() {
 
   // jQuery AJAX request
   $.ajax({
-    url: "js/auth.json",
+    url: "../js/auth.json",
     method: "GET",
     contentType: "application/json",
     success: function (data) {
@@ -45,7 +45,7 @@ function authenticateUser() {
 
       if (user) {
         setCookie("username", username, 7); // Set exp cookie 7 haru
-        window.location.href = "Table.html";
+        checkLogin();
       } else {
         $("#loginForm").removeClass("mb-5").addClass("mb-2");
         loginMessage.html(
