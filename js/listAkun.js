@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // 1. Navigasi ke halaman "Tambah Akun"
   const tambahBeritaButton = document.querySelector('.btn.btn-success.d-flex.align-items-center');
   tambahBeritaButton.addEventListener('click', function () {
-    window.location.href = 'addAkun.html';
+    window.location.href = 'BuatAkun.html';
   });
 
   // 2. Fungsi pencarian di tabel
