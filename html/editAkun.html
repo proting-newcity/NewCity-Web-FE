@@ -9,10 +9,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
-    <link rel="stylesheet" href="../css/listAkun.css">
+    <link rel="stylesheet" href="../css/editAkun.css">
   </head>
 
-  <body style="overflow: hidden;" onload="loadData()">
+  <body style="overflow: hidden;">
     <!-- NAV BAR -->
     <nav class="navbar navbar-expand-lg" style="background: #ECEBE6;">
         <div class="container-fluid">
@@ -62,68 +62,72 @@
         <!-- SIDE BAR -->
 
         <!-- CONTENT -->
-        <div class="col">
-          <div class="row">
-          <div class="col">
-            <div class="d-flex justify-content-start align-items-center" style="margin-top: 20px; padding-left: 20px;">
-              <button type="button" class="btn btn-success d-flex align-items-center" style="border-radius: 30px; padding: 10px 20px; background-color: #588157; font-weight: bolder;">
-                <i class="fas fa-plus me-2" style="font-size: 12px;"></i> Tambah Akun
-              </button>
-            </div>
-        </div>
-        
-        <!-- Search Form -->
-        <div class="col-md-4">
-          <div class="d-flex justify-content-end align-items-center" style="margin-top: 20px; padding-right: 20px;">
-            <form class="d-flex" role="search" style="width: 100%;">
-              <div class="input-group" style="border: none; background-color: #D9D9D9; border-radius: 25px; height: 50px; width: 100%;">
-                <span class="input-group-text" id="search-addon" style="border: none; background-color: #D9D9D9; border-radius: 25px; height: 50px;  width: 100%;">
-                  <i class="fas fa-search" style=" padding-left: 20px;"></i>
-                  <input class="form-control" type="search" placeholder="Cari Akun..." aria-label="Search" aria-describedby="search-addon" style="padding-left: 20px; border: none; background-color: #D9D9D9; border-radius: 25px; height: 50px;">
-                </span>
+        <div class="col md-12 bg-white p-5">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col bg-white p-5">
+                <div class= row">
+                  <!-- Photo Upload Section -->
+                  <div class= row justify-content-md-center style="margin-left: 150px;">
+                    <div class="photo-upload border border-success rounded-circle d-flex flex-column justify-content-center align-items-center">
+                      <i class="bi bi-camera" style="font-size: 4em; color: #588157;"></i>
+                      <span>Unggah Foto</span>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="row">
+                      <label for="username" class="form-label">Username</label>
+                      <input type="text" class="form-control" id="username" placeholder="Masukkan Username">
+                    </div>
+                    <div class="row">
+                      <label for="password" class="form-label">Password</label>
+                      <input type="password" class="form-control" id="password" placeholder="Masukkan Password">
+                    </div>
+                  </div>
+                </div>
               </div>
-            </form>
-          </div>
-        </div>
-
-
-        <!-- Table Section with Card Wrapper -->
-        <div class="card-body" style="margin-top: 5px; padding-left: 30px; padding-right: 30px;">
-          <div class="table-responsive" style="border: none #ECEBE6; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05); border-radius: 10px; margin-top: 13px;">
-            <table class="table table-hover align-middle">
-                <thead>
-                  <tr class="table-active">
-                    <th scope="col" style="padding-left: 20px; font-weight: normal;">Nama</th>
-                    <th scope="col" style="font-weight: normal;">NIP</th>
-                    <th scope="col" style="font-weight: normal;">Cakupan</th>
-                    <th scope="col" style="font-weight: normal;">Status</th>
-                    <th scope="col" style="font-weight: normal;">Aksi</th>
-                  </tr>
-                </thead>
-                <tbody>
   
-                </tbody>
-            </table>
-                
-            <!-- Buttons below the table -->
-            <div class="card-footer d-flex align-items-center justify-content-between" style="margin-top: 0; padding-left: 20px; padding-right: 20px; padding-bottom: 18px;">
-              <button type="button" class="btn btn-success" id="buttonprev" style="border: none; border-radius: 10px; padding: 10px 20px; background-color: #588157; font-weight: normal;"> Sebelumnya</button>
-              
-              <!-- Centered text -->
-              <span id="page-number" class="mx-auto" style="font-weight: normal;">1 dari 10</span>
-              
-              <button type="button" class="btn btn-success" id="buttonnext" style="border: none; border-radius: 10px; padding: 10px 20px; background-color: #588157; font-weight: normal;"> Berikutnya</button>
+              <!-- Form Section -->
+              <div class="col bg-white p-5  ">
+                <form>
+                  <div class="row mb-3">
+                    <div class="row">
+                      <label for="name" class="form-label">Nama</label>
+                      <input type="text" class="form-control" id="name" placeholder="Masukkan Nama">
+                    </div>
+                    <div class="row">
+                      <label for="nip" class="form-label">NIP</label>
+                      <input type="text" class="form-control" id="nip" placeholder="Masukkan NIP">
+                    </div>
+                    <div class="row">
+                      <label for="region" class="form-label">Cakupan</label>
+                      <input type="text" class="form-control" id="region" placeholder="Masukkan Cakupan Wilayah">
+                    </div>
+                    <div class="row">
+                      <label for="status" class="form-label">Status</label>
+                      <select class="form-select" id="status">
+                        <option selected>Masukkan Status</option>
+                      </select>
+                    </div>
+                  </div>
+  
+                  <!-- Button Section -->
+                  <div class="d-flex justify-content-end mt-4">
+                    <button type="button" class="btn btn-outline-secondary me-2">Batal</button>
+                    <button type="submit" class="btn btn-success">Simpan</button>
+                  </div>
+                </form>
+              </div>
             </div>
-
-            <!-- END CONTENT -->
           </div>
         </div>
+        <!-- END CONTENT -->
       </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
-    <script src="../js/listAkun.js"></script>
+    <script src="../js/editAkun.js"></script>
   </body>
 </html>
