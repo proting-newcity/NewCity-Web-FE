@@ -19,7 +19,6 @@
   width: 45px;
   background-color: #3a5a40;
   border-radius: 50%;
-  text-align: match-parent;
   display: inline-block;
 }
 
@@ -38,6 +37,38 @@
   background-color: #e5e3dc;
   border-radius: 20px;
   height: 55px;
+}
+
+/* Hover effect for the card */
+#card-list:hover {
+  background-color: #d3e4cd; /* Hover color */
+  border-color: #3a5a40;
+}
+
+/* Active/selected card style */
+.active #card-list {
+  background-color: #3a5a40; /* Active color */
+  border-color: #f3feee;
+  color: #f3feee;
+  .dot {
+    background-color: #617b66;
+  }
+}
+
+#back-to-top {
+  position: fixed; /* Keeps it fixed within the scrollable container */
+  bottom: 2%; /* Position at the bottom within the scroll area */
+  left: 33%;
+  padding: 10px 15px;
+  background-color: #3a5a40;
+  color: #f3feee;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#back-to-top:hover {
+  background-color: #2a4830;
 }
 
 /* Media Query for very small screens */
