@@ -23,7 +23,7 @@ body {
 }
 
 /* Untuk tampilan kecil */
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1024px) {
     .box-area {
         flex-direction: column;
         justify-content: center;
@@ -37,12 +37,12 @@ body {
 
     .left-box {
         height: auto;
-        justify-content: center; /* Pastikan logo tetap di tengah */
-        padding: 20px; /* Tambahkan padding */
+        justify-content: center;
+        padding: 20px;
     }
 
     .logo-img {
         width: 80%;
-        max-width: 300px; /* Batas maksimum ukuran gambar */
+        max-width: 300px;
     }
 }

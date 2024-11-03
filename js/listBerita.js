@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', function () {
     searchInput.addEventListener('input', function () {
         const searchText = searchInput.value.toLowerCase();
         const tableRows = document.querySelectorAll('tbody tr');
-
         tableRows.forEach(row => {
             const rowText = row.textContent.toLowerCase();
             if (rowText.includes(searchText)) {
