@@ -75,7 +75,7 @@ $(document).ready(function () {
     function collectData() {
         const title = $('#editor h2').text();
         const content = $('#editor p').text();
-        const author = 'Sipaa';
+        const author = 'admin';
         const modifiedDate = $('.detail-description.modified-date').text();
         const categories = [];
         $('input[type="checkbox"]:checked').each(function () {
@@ -83,19 +83,23 @@ $(document).ready(function () {
         });
 
         return {
-            title: title,
-            content: content,
-            author: author,
-            modifiedDate: modifiedDate,
-            categories: categories
+            judul: title,
+            konten: content,
+            editor: author,
+            tanggal: modifiedDate,
+            kategori: categories
         };
     }
 
     function saveJsonData(jsonData) {
         $.ajax({
-            url: 'http://localhost:3000/save-json',
+            url: 'http://localhost:3000/saveJson', // Ensure the URL matches your server endpoint
             type: 'POST',
             contentType: 'application/json',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
             data: JSON.stringify(jsonData),
             success: function(response) {
                 console.log('Data successfully updated:', response);
@@ -105,6 +109,7 @@ $(document).ready(function () {
             }
         });
     }
+    
 
     $('.publish-button').click(function () {
         updateDetailsTitle();

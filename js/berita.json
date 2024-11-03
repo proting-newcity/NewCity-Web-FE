@@ -1,46 +1,9 @@
 {
-    "berita": [
-      {
-        "judul": "Ada 21 titik trans metro bandung (tmb) maupun halte",
-        "kategori": "Transportasi",
-        "editor": "admin",
-        "tanggal": "2021-03-01",
-        "status": "Diterbitkan"
-      },
-      {
-        "judul": "Ada 21 titik trans metro bandung (tmb) maupun halte",
-        "kategori": "Transportasi",
-        "editor": "admin",
-        "tanggal": "2021-03-01",
-        "status": "Diterbitkan"
-      },
-      {
-        "judul": "Ada 21 titik trans metro bandung (tmb) maupun halte",
-        "kategori": "Transportasi",
-        "editor": "admin",
-        "tanggal": "2021-03-01",
-        "status": "Diterbitkan"
-      },
-      {
-        "judul": "Ada 21 titik trans metro bandung (tmb) maupun halte",
-        "kategori": "Transportasi",
-        "editor": "admin",
-        "tanggal": "2021-03-01",
-        "status": "Diterbitkan"
-      },
-      {
-        "judul": "Ada 21 titik trans metro bandung (tmb) maupun halte",
-        "kategori": "Transportasi",
-        "editor": "admin",
-        "tanggal": "2021-03-01",
-        "status": "Diterbitkan"
-      },
-      {
-        "judul": "Ada 21 titik trans metro bandung (tmb) maupun halte",
-        "kategori": "Transportasi",
-        "editor": "admin",
-        "tanggal": "2021-03-01",
-        "status": "Diterbitkan"
-      }
-    ]
-  }
+  "judul": "Banjir Sukabirus",
+  "konten": "Banjir karena hujan deras seharian",
+  "editor": "admin",
+  "tanggal": "03 November 2024 pukul 21.00.26",
+  "kategori": [
+    "Bencana Alam"
+  ]
+}
