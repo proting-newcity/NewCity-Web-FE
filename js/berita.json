@@ -1,46 +1,58 @@
 {
-    "berita": [
-      {
-        "judul": "Ada 21 titik trans metro bandung (tmb) maupun halte",
-        "kategori": "Transportasi",
-        "editor": "admin",
-        "tanggal": "2021-03-01",
-        "status": "Diterbitkan"
-      },
-      {
-        "judul": "Ada 21 titik trans metro bandung (tmb) maupun halte",
-        "kategori": "Transportasi",
-        "editor": "admin",
-        "tanggal": "2021-03-01",
-        "status": "Diterbitkan"
-      },
-      {
-        "judul": "Ada 21 titik trans metro bandung (tmb) maupun halte",
-        "kategori": "Transportasi",
-        "editor": "admin",
-        "tanggal": "2021-03-01",
-        "status": "Diterbitkan"
-      },
-      {
-        "judul": "Ada 21 titik trans metro bandung (tmb) maupun halte",
-        "kategori": "Transportasi",
-        "editor": "admin",
-        "tanggal": "2021-03-01",
-        "status": "Diterbitkan"
-      },
-      {
-        "judul": "Ada 21 titik trans metro bandung (tmb) maupun halte",
-        "kategori": "Transportasi",
-        "editor": "admin",
-        "tanggal": "2021-03-01",
-        "status": "Diterbitkan"
-      },
-      {
-        "judul": "Ada 21 titik trans metro bandung (tmb) maupun halte",
-        "kategori": "Transportasi",
-        "editor": "admin",
-        "tanggal": "2021-03-01",
-        "status": "Diterbitkan"
-      }
-    ]
-  }
+  "berita": [
+    {
+      "judul": "Banjir Sukabirus",
+      "konten": "Banjir karena hujan deras seharian",
+      "kategori": "Bencana Alam",
+      "editor": "admin",
+      "tanggal": "2024-11-03",
+      "status": "Diterbitkan"
+    },
+    {
+      "judul": "Jalan Rusak Sepanjang 700 Meter Di Rancaekek",
+      "konten": "Ruas jalan sepanjang 700 meter di daerah Rancaekek, Kabupaten Bandung rusak. Kerusakan disebabkan banyaknya kendaraan berat yang lalu-lalang, dan jalur pembuangan air hujan yang tidak memadai.",
+      "kategori": [
+        "Transportasi",
+        "Sarana & Prasarana"
+      ],
+      "editor": "admin",
+      "tanggal": "2024-09-21",
+      "status": "Diterbitkan"
+    },
+    {
+      "judul": "21 Halte Trans Metro Bandung Tidak Layak Guna",
+      "konten": "Kerusakan fasilitas umum halte Trans Metro Bandung...",
+      "kategori": [
+        "Transportasi",
+        "Sarana & Prasarana"
+      ],
+      "editor": "admin",
+      "tanggal": "2024-03-01",
+      "status": "Diterbitkan"
+    },
+    {
+      "judul":"null",
+      "konten":"null",
+      "kategori":"null",
+      "editor":"null",
+      "tanggal":"null",
+      "status":"null"
+    },
+    {
+      "judul":"null",
+      "konten":"null",
+      "kategori":"null",
+      "editor":"null",
+      "tanggal":"null",
+      "status":"null"
+    },
+    {
+      "judul":"null",
+      "konten":"null",
+      "kategori":"null",
+      "editor":"null",
+      "tanggal":"null",
+      "status":"null"
+    }
+  ]
+}

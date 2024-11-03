@@ -59,6 +59,7 @@ $(document).ready(function () {
         }
     }
 
+    //Nampilin waktu publikasi secara real-time
     function updateModifiedDate() {
         const currentDate = new Date();
         const formattedDate = currentDate.toLocaleString('id-ID', {
@@ -75,7 +76,7 @@ $(document).ready(function () {
     function collectData() {
         const title = $('#editor h2').text();
         const content = $('#editor p').text();
-        const author = 'Sipaa';
+        const author = 'admin';
         const modifiedDate = $('.detail-description.modified-date').text();
         const categories = [];
         $('input[type="checkbox"]:checked').each(function () {
@@ -83,29 +84,15 @@ $(document).ready(function () {
         });
 
         return {
-            title: title,
-            content: content,
-            author: author,
-            modifiedDate: modifiedDate,
-            categories: categories
+            judul: title,
+            konten: content,
+            editor: author,
+            tanggal: modifiedDate,
+            kategori: categories
         };
     }
 
-    function saveJsonData(jsonData) {
-        $.ajax({
-            url: 'http://localhost:3000/save-json',
-            type: 'POST',
-            contentType: 'application/json',
-            data: JSON.stringify(jsonData),
-            success: function(response) {
-                console.log('Data successfully updated:', response);
-            },
-            error: function(xhr, status, error) {
-                console.error('Error saving data:', error);
-            }
-        });
-    }
-
+    //Menyimpan perubahan; judul, konten, details, dan ditampilkan ke sidebar
     $('.publish-button').click(function () {
         updateDetailsTitle();
         updateModifiedDate();
@@ -114,39 +101,5 @@ $(document).ready(function () {
 
         const jsonData = collectData();
         console.log(JSON.stringify(jsonData, null, 2));
-
-        //downloadJson(jsonData);
-        saveJsonData(jsonData);
     });
-
-    /*// New function to load JSON data
-    function loadJsonData() {
-        fetch('js/berita.json')
-            .then(response => response.json())
-            .then(data => {
-                const beritaList = data.berita;
-                updateDetails(beritaList[0]);
-            })
-            .catch(error => console.error('Error fetching berita:', error));
-    }
-
-    // New function to update details section based on JSON data
-    function updateDetails(data) {
-        $('#details-title').text(data.judul);
-        $('.detail-description.editor').text(data.editor);
-        $('.detail-description.status').text(data.status);
-    }*/
-
-    /*function downloadJson(data, filename = 'data.json') {
-        const jsonStr = JSON.stringify(data, null, 2);
-        const blob = new Blob([jsonStr], { type: 'application/json' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = filename;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
-    }*/
 });
