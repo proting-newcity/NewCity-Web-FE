@@ -3,6 +3,7 @@ $(document).ready(function () {
     const urlParams = new URLSearchParams(window.location.search);
     const beritaId = urlParams.get('id');
 
+    //Memuat data dari json untuk ditampilkan
     loadJsonData(beritaId);
     updateDetailsTitle();
 
@@ -67,6 +68,7 @@ $(document).ready(function () {
         }
     }
 
+    //Nampilin waktu publikasi secara real-time
     function updateModifiedDate() {
         const currentDate = new Date();
         const formattedDate = currentDate.toLocaleString('id-ID', {
@@ -80,6 +82,7 @@ $(document).ready(function () {
         $('.detail-description.modified-date').text(formattedDate);
     }
 
+    //Nampilin data json ke field yang sesuai
     function collectData() {
         const title = $('#editor h2').text();
         const content = $('#editor p').text();
@@ -109,6 +112,7 @@ $(document).ready(function () {
         console.log(JSON.stringify(jsonData, null, 2));
     });
 
+    //Nampilin data ketika tombol edit dipencet di halaman listBerita, sesuai list
     function loadJsonData(id) {
         fetch('../js/berita.json')
             .then(response => response.json())
@@ -119,12 +123,13 @@ $(document).ready(function () {
             .catch(error => console.error('Error fetching berita:', error));
     }
 
+    //Nampilin judul di H2 editor
     function updateDetailsTitle() {
         const editorTitle = $('#editor h2').text();
         $('#details-title').text(editorTitle || 'Tambah judul...');
     }
     
-
+    //Nampilin data ke field di sidebar
     function populateEditor(data) {
         $('#editor h2').text(data.judul || 'Tambah judul...');
         $('#editor p').text(data.konten || 'Mulai tulis isi berita di sini...');
@@ -132,8 +137,8 @@ $(document).ready(function () {
         $('.detail-description.modified-date').text(data.tanggal || '');
         $('.detail-description.status').text(data.status || 'Draft');
         $('#details-title').text(data.judul || 'Tambah judul...');
-    
-        // Handle categories
+
+        //Handle kategori berita
         $('input[type="checkbox"]').each(function () {
             if (data.kategori.includes($(this).next('label').text())) {
                 $(this).prop('checked', true);

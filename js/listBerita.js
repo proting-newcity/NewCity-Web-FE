@@ -44,7 +44,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // 4. Delete and Edit actions for each account row
-    // 4. Delete and Edit actions for each account row
     const tableBody = document.querySelector('tbody');
 
     function loadBerita() {

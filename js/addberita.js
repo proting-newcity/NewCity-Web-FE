@@ -59,6 +59,7 @@ $(document).ready(function () {
         }
     }
 
+    //Nampilin waktu publikasi secara real-time
     function updateModifiedDate() {
         const currentDate = new Date();
         const formattedDate = currentDate.toLocaleString('id-ID', {
@@ -91,6 +92,7 @@ $(document).ready(function () {
         };
     }
 
+    //Menyimpan perubahan; judul, konten, details, dan ditampilkan ke sidebar
     $('.publish-button').click(function () {
         updateDetailsTitle();
         updateModifiedDate();
