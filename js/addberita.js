@@ -91,26 +91,6 @@ $(document).ready(function () {
         };
     }
 
-    function saveJsonData(jsonData) {
-        $.ajax({
-            url: 'http://localhost:3000/saveJson', // Ensure the URL matches your server endpoint
-            type: 'POST',
-            contentType: 'application/json',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            data: JSON.stringify(jsonData),
-            success: function(response) {
-                console.log('Data successfully updated:', response);
-            },
-            error: function(xhr, status, error) {
-                console.error('Error saving data:', error);
-            }
-        });
-    }
-    
-
     $('.publish-button').click(function () {
         updateDetailsTitle();
         updateModifiedDate();
@@ -119,39 +99,5 @@ $(document).ready(function () {
 
         const jsonData = collectData();
         console.log(JSON.stringify(jsonData, null, 2));
-
-        //downloadJson(jsonData);
-        saveJsonData(jsonData);
     });
-
-    /*// New function to load JSON data
-    function loadJsonData() {
-        fetch('js/berita.json')
-            .then(response => response.json())
-            .then(data => {
-                const beritaList = data.berita;
-                updateDetails(beritaList[0]);
-            })
-            .catch(error => console.error('Error fetching berita:', error));
-    }
-
-    // New function to update details section based on JSON data
-    function updateDetails(data) {
-        $('#details-title').text(data.judul);
-        $('.detail-description.editor').text(data.editor);
-        $('.detail-description.status').text(data.status);
-    }*/
-
-    /*function downloadJson(data, filename = 'data.json') {
-        const jsonStr = JSON.stringify(data, null, 2);
-        const blob = new Blob([jsonStr], { type: 'application/json' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = filename;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
-    }*/
 });

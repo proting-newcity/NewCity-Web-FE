@@ -1,9 +1,49 @@
 {
-  "judul": "Banjir Sukabirus",
-  "konten": "Banjir karena hujan deras seharian",
-  "editor": "admin",
-  "tanggal": "03 November 2024 pukul 21.00.26",
-  "kategori": [
-    "Bencana Alam"
+  "berita": [
+    {
+      "judul": "Banjir Sukabirus",
+      "konten": "Banjir karena hujan deras seharian",
+      "kategori": "Bencana Alam",
+      "editor": "admin",
+      "tanggal": "03 November 2024 pukul 21.00.26",
+      "status": "Diterbitkan"
+    },
+    {
+      "judul": "21 Halte Trans Metro Bandung Tidak Layak Guna",
+      "konten": "Kerusakan fasilitas umum halte Trans Metro Bandung...",
+      "kategori": "Transportasi",
+      "editor": "admin",
+      "tanggal": "2021-03-01",
+      "status": "Diterbitkan"
+    },
+    {
+      "judul": "21 Halte Trans Metro Bandung Tidak Layak Guna",
+      "konten": "Kerusakan fasilitas umum halte Trans Metro Bandung...",
+      "kategori": "Transportasi",
+      "editor": "admin",
+      "tanggal": "2021-03-01",
+      "status": "Diterbitkan"
+    },{
+      "judul": "21 Halte Trans Metro Bandung Tidak Layak Guna",
+      "konten": "Kerusakan fasilitas umum halte Trans Metro Bandung...",
+      "kategori": "Transportasi",
+      "editor": "admin",
+      "tanggal": "2021-03-01",
+      "status": "Diterbitkan"
+    },{
+      "judul": "21 Halte Trans Metro Bandung Tidak Layak Guna",
+      "konten": "Kerusakan fasilitas umum halte Trans Metro Bandung...",
+      "kategori": "Transportasi",
+      "editor": "admin",
+      "tanggal": "2021-03-01",
+      "status": "Diterbitkan"
+    },{
+      "judul": "21 Halte Trans Metro Bandung Tidak Layak Guna",
+      "konten": "Kerusakan fasilitas umum halte Trans Metro Bandung...",
+      "kategori": "Transportasi",
+      "editor": "admin",
+      "tanggal": "2021-03-01",
+      "status": "Diterbitkan"
+    }
   ]
 }
