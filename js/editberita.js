@@ -1,5 +1,9 @@
 $(document).ready(function () {
-    loadJsonData();
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const beritaId = urlParams.get('id');
+
+    loadJsonData(beritaId);
     updateDetailsTitle();
 
     $('#editor h2').on('input', updateDetailsTitle);
@@ -105,12 +109,12 @@ $(document).ready(function () {
         console.log(JSON.stringify(jsonData, null, 2));
     });
 
-    function loadJsonData() {
+    function loadJsonData(id) {
         fetch('../js/berita.json')
             .then(response => response.json())
             .then(data => {
-                const beritaList = data.berita; // Assuming data has a 'berita' array
-                populateEditor(beritaList[0]); // Just for example, load the first item
+                const beritaList = data.berita[id];
+                populateEditor(beritaList);
             })
             .catch(error => console.error('Error fetching berita:', error));
     }
