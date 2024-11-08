@@ -34,7 +34,7 @@
 
     <!-- NAV BAR -->
     <div class="container-fluid">
-      <div class="row" ">
+      <div class="row">
         <!-- SIDE BAR -->
         <div class="col-auto min-vh-100 d-flex align-items-center flex-column sidebar" style="background: #ECEBE6; width: 5%;">
           <div class="mt-4"  ></div>
@@ -66,15 +66,16 @@
           <div class="container-fluid">
             <div class="row">
               <div class="col bg-white p-5">
-                <div class= row">
+                <div class= "row">
                   <!-- Photo Upload Section -->
                   <div class= row justify-content-md-center style="margin-left: 150px;">
-                    <div class="photo-upload border border-success rounded-circle d-flex flex-column justify-content-center align-items-center">
+                    <div class="photo-upload border border-success rounded-circle d-flex flex-column justify-content-center align-items-center" style="margin-bottom: 50px;">
                       <i class="bi bi-camera" style="font-size: 4em; color: #588157;"></i>
                       <span>Unggah Foto</span>
                     </div>
                   </div>
                   <div class="row">
+                    <h2 class="text-left">Informasi Akun</h2>
                     <div class="row">
                       <label for="username" class="form-label">Username</label>
                       <input type="text" class="form-control" id="username" placeholder="Masukkan Username">
@@ -90,7 +91,8 @@
               <!-- Form Section -->
               <div class="col bg-white p-5  ">
                 <form>
-                  <div class="row mb-3">
+                  <div class="row mb-3" style="margin-bottom: 50px;">
+                    <h2 class="text-left">Biodata Akun</h2>
                     <div class="row">
                       <label for="name" class="form-label">Nama</label>
                       <input type="text" class="form-control" id="name" placeholder="Masukkan Nama">
@@ -106,13 +108,14 @@
                     <div class="row">
                       <label for="status" class="form-label">Status</label>
                       <select class="form-select" id="status">
-                        <option selected>Masukkan Status</option>
+                        <option>Aktif</option>
+                        <option>Non-Aktif</option>
                       </select>
                     </div>
                   </div>
   
                   <!-- Button Section -->
-                  <div class="d-flex justify-content-end mt-4">
+                  <div class="d-flex justify-content-end mt-4" style="margin-top: 50px;">
                     <button type="button" class="btn btn-outline-secondary me-2">Batal</button>
                     <button type="submit" class="btn btn-success">Simpan</button>
                   </div>

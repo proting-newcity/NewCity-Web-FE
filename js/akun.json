@@ -1,0 +1,117 @@
+{
+    "akun" : [
+      {
+        "username": "Winter",
+        "nama" : "Kim Min Jeong",
+        "nip": "32731230000126",
+        "cakupan": "Bojongsoang",
+        "status": "Aktif",
+        "profileImage": "images/Winter.jpeg"
+      },
+      {
+        "username": "Karina",
+        "nama" : "Yu Jimin",
+        "nip": "32731230000123",
+        "cakupan": "Bojongsoang",
+        "status": "Aktif",
+        "profileImage": "images/karina.jpeg"
+      },
+      {
+        "username": "Chaewon",
+        "nama" : "Kim Chaewon",
+        "nip": "32731230000001",
+        "cakupan": "Bojongsoang",
+        "status": "Aktif",
+        "profileImage": "images/chaewon.jpeg"
+      },
+      {
+        "username": "Eunha",
+        "nama" : "Jung Eunbi",
+        "nip": "32731230000022",
+        "cakupan": "Bojongsoang",
+        "status": "Aktif",
+        "profileImage": "images/eunha.jpg"
+      },
+      {
+        "username": "Wonhee",
+        "nama" : "Lee Won Hee",
+        "nip": "32731230000125",
+        "cakupan": "Bojongsoang",
+        "status": "Aktif",
+        "profileImage": "images/wonhee.jpeg"
+      },
+      {
+        "username": "Ningning",
+        "nama" : "Ning Yizhuo",
+        "nip": "32731230000111",
+        "cakupan": "Bojongsoang",
+        "status": "Aktif",
+        "profileImage": "images/ningning.jpeg"
+      },
+      {
+        "username": "Jihyo",
+        "nama" : "Park Ji-Hyo",
+        "nip": "32731230000222",
+        "cakupan": "Bojongsoang",
+        "status": "Aktif",
+        "profileImage": "images/jihyo.jpeg"
+      },
+      {
+        "username": "Giselle",
+        "nama" : "Aeri Uchinaga",
+        "nip": "32731230000241",
+        "cakupan": "Bojongsoang",
+        "status": "Aktif",
+        "profileImage": "images/giselle.jpeg"
+      },
+      {
+        "username": "Jisoo",
+        "nama" : "Kim Jisoo",
+        "nip": "3273123003456",
+        "cakupan": "Bojongsoang",
+        "status": "Aktif",
+        "profileImage": "images/jisoo.jpeg"
+      },
+      {
+        "username": "Ahyeon",
+        "nama" : "Jung Ah-Yeon",
+        "nip": "32731230005687",
+        "cakupan": "Bojongsoang",
+        "status": "Aktif",
+        "profileImage": "images/ahyeon.jpeg"
+      },
+      {
+        "username": "Ningning",
+        "nama" : "Ning Yizhuo",
+        "nip": "32731230000111",
+        "cakupan": "Bojongsoang",
+        "status": "Aktif",
+        "profileImage": "images/ningning.jpeg"
+      },
+      {
+        "username": "Ningning",
+        "nama" : "Ning Yizhuo",
+        "nip": "32731230000111",
+        "cakupan": "Bojongsoang",
+        "status": "Aktif",
+        "profileImage": "images/ningning.jpeg"
+      },
+      {
+        "username": "Ningning",
+        "nama" : "Ning Yizhuo",
+        "nip": "32731230000111",
+        "cakupan": "Bojongsoang",
+        "status": "Aktif",
+        "profileImage": "images/ningning.jpeg"
+      },
+      {
+        "username": "Ningning",
+        "nama" : "Ning Yizhuo",
+        "nip": "32731230000111",
+        "cakupan": "Bojongsoang",
+        "status": "Aktif",
+        "profileImage": "images/ningning.jpeg"
+      }
+    ]
+  }
+    
