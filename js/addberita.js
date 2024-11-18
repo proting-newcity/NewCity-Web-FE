@@ -82,7 +82,7 @@ $(document).ready(function () {
         $('input[type="checkbox"]:checked').each(function () {
             categories.push($(this).next('label').text());
         });
-
+    
         return {
             judul: title,
             konten: content,
@@ -91,15 +91,25 @@ $(document).ready(function () {
             kategori: categories
         };
     }
-
-    //Menyimpan perubahan; judul, konten, details, dan ditampilkan ke sidebar
+    
     $('.publish-button').click(function () {
-        updateDetailsTitle();
-        updateModifiedDate();
-
         $('.detail-description.status').text('Diterbitkan');
-
+    
         const jsonData = collectData();
-        console.log(JSON.stringify(jsonData, null, 2));
+        $.ajax({
+            url: 'http://localhost/NewCity-Web-FE/newcity.php',
+            type: 'POST',
+            data: JSON.stringify(jsonData),
+            contentType: 'application/json',
+            success: function (response) {
+                console.log('Data berhasil disimpan:', response);
+                alert('Data berhasil disimpan ke file JSON.');
+            },
+            error: function (xhr, status, error) {
+                console.error('Terjadi kesalahan:', error);
+                alert('Gagal menyimpan data. Periksa konfigurasi server.');
+            }
+        });
     });
+    
 });

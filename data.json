@@ -1,0 +1,19 @@
+[
+    {
+        "judul": "Contoh Judul",
+        "konten": "Ini adalah isi konten.",
+        "editor": "admin",
+        "tanggal": "2024-11-18",
+        "kategori": [
+            "Kategori 1",
+            "Kategori 2"
+        ]
+    },
+    {
+        "judul": "Tambah judul...",
+        "konten": "Mulai tulis isi berita di sini...",
+        "editor": "admin",
+        "tanggal": "18 November 2024 pukul 11.04.37",
+        "kategori": []
+    }
+]
