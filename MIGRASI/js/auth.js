@@ -31,6 +31,7 @@ function authenticateUser() {
   const username = $("#input-username").val();
   const password = $("#input-password").val();
   const loginMessage = $("#loginMessage");
+  const alwaysSignedIn = document.getElementById("alwaysSignedIn").checked;
 
   // jQuery AJAX request
   $.ajax({
@@ -44,7 +45,9 @@ function authenticateUser() {
       );
 
       if (user) {
-        setCookie("username", username, 7); // Set exp cookie 7 haru
+        if (alwaysSignedIn) {
+          setCookie("username", username, 7); // Set cookie exp 7 hari
+        }
         checkLogin();
       } else {
         $("#loginForm").removeClass("mb-5").addClass("mb-2");
@@ -59,13 +62,33 @@ function authenticateUser() {
   });
 }
 
-// Cek login dari cookie
+// Cek login 
 function checkLogin() {
-  const username = getCookie("username");
-  if (username) {
-    window.location.href = "listBerita.html";
-  }
+  const user = getCookie("username");
+  const username = $("#input-username").val();
+  const password = $("#input-password").val();
+
+  // cek pake cookie
+  if (user) window.location.href = "listBerita.html";
+
+  // AJAX request cek dari json
+  $.ajax({
+    url: "../js/auth.json",
+    method: "GET",
+    contentType: "application/json",
+    success: function (data) {
+      const userExists = data.users.some((user) => user.username === username);
+
+      if (userExists) {
+        window.location.href = "listBerita.html";
+      }
+    },
+    error: function () {
+      console.error("Error loading user data");
+    },
+  });
 }
+
 
 // Call checkLogin on page load
 window.onload = checkLogin;
