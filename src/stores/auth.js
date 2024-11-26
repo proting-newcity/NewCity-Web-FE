@@ -27,13 +27,14 @@ export const useAuthStore = defineStore("auth", {
       }
     },
 
-    async handleLogin(username, password) {
+    async handleLogin(username, password, alwaysSignedIn) {
       try {
         await this.getToken();
-        const response = await axios.post("/login", {
+        await axios.post("/login", {
           username: username,
           password: password,
           role: "admin",
+          always_signed_in: alwaysSignedIn,
         });
 
         this.error = null;

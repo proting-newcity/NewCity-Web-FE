@@ -10,7 +10,7 @@ const loginMessage = ref("");
 const authStore = useAuthStore();
 
 const authenticateUser = () => {
-    authStore.handleLogin(username.value, password.value);
+    authStore.handleLogin(username.value, password.value, alwaysSignedIn.value);
 };
 
 </script>
