@@ -1,13 +1,22 @@
-import './assets/main.css'
-import 'bootstrap/dist/css/bootstrap.css'
-import { createApp } from 'vue'
-import App from './App.vue'
-import router from './router'
+import "./assets/main.css";
+import "bootstrap/dist/css/bootstrap.css";
+import { createApp, markRaw } from "vue";
+import { createPinia } from "pinia";
+import App from "./App.vue";
+import router from "./router";
+import "./axios";
 
-const app = createApp(App)
+const pinia = createPinia();
 
-app.use(router)
+pinia.use(({ store }) => {
+  store.router = markRaw(router);
+});
 
-app.mount('#app')
+const app = createApp(App);
 
-import 'bootstrap/dist/js/bootstrap.js'
+app.use(router);
+app.use(pinia);
+
+app.mount("#app");
+
+import "bootstrap/dist/js/bootstrap.js";
