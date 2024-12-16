@@ -46,7 +46,9 @@ const changeTable = (table) => {
     background-color: #f4f4f4;
 }
 
-.table-berita {
+.table-berita,
+.table-pemerintah,
+.table-pemerintah {
     flex: 1;
     padding: 20px;
 

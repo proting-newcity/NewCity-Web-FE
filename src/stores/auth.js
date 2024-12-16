@@ -65,9 +65,19 @@ export const useAuthStore = defineStore("auth", {
     async getBerita(page = 1) {
       try {
         const response = await axios.get(`/api/berita?page=${page}`);
-        return response.data; // Kembalikan data API
+        return response.data;
       } catch (error) {
         console.error("Error fetching berita:", error);
+        throw error;
+      }
+    },
+
+    async getPemerintah(page = 1) {
+      try {
+        const response = await axios.get(`/api/pemerintah?page=${page}`);
+        return response.data;
+      } catch (error) {
+        console.error("Error fetching pemerintah:", error);
         throw error;
       }
     },
