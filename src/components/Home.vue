@@ -3,20 +3,28 @@ import { ref, onMounted } from 'vue';
 import { useAuthStore } from '../stores/auth';
 import Sidebar from './Sidebar.vue';
 import TableBerita from './TableBerita.vue';
+import TablePemerintah from './TablePemerintah.vue';
 import Navbar from './navbar.vue';
 
 const authStore = useAuthStore();
+const activeTable = ref('berita');
 
 onMounted(async () => {
     await authStore.getUser();
 })
+
+const changeTable = (table) => {
+    activeTable.value = table;
+};
 </script>
 
 <template>
     <Navbar />
     <div class="content">
-        <Sidebar />
-        <TableBerita />
+        <Sidebar @changeTable="changeTable" />
+        <TableBerita v-if="activeTable === 'berita'" />
+        <TablePemerintah v-if="activeTable === 'pemerintah'" />
+        <TableReport v-if="activeTable === 'report'" />
     </div>
 </template>
 
@@ -34,14 +42,13 @@ onMounted(async () => {
 }
 
 .sidebar {
-    /* flex: 0 0 20%; Sidebar takes 20% width */
-    max-width: 300px; /* Set max width if needed */
-    background-color: #f4f4f4; /* Example background color */
+    max-width: 300px;
+    background-color: #f4f4f4;
 }
 
 .table-berita {
-    flex: 1; /* Remaining space given to TableBerita */
-    padding: 20px; /* Add padding for neatness */
-    
+    flex: 1;
+    padding: 20px;
+
 }
 </style>

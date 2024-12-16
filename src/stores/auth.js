@@ -28,8 +28,11 @@ export const useAuthStore = defineStore("auth", {
         await this.getToken();
         const data = await axios.get("/api/user");
         this.authUser = data.data;
+        return true;
       } catch (e) {
+        this.authUser = null;
         console.error("Error fetching user:", e);
+        return false;
       }
     },
 
@@ -67,6 +70,6 @@ export const useAuthStore = defineStore("auth", {
         console.error("Error fetching berita:", error);
         throw error;
       }
-    }
+    },
   },
 });
