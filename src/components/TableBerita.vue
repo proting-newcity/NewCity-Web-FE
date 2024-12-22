@@ -1,8 +1,8 @@
 <script setup>
 import { ref, onMounted } from "vue";
-import { useAuthStore } from "../stores/auth";
+import { useBeritaStore } from "@/stores/berita";
 
-const dataStore = useAuthStore();
+const dataStore = useBeritaStore();
 const berita = ref([]);
 const currentPage = ref(1);
 const totalPages = ref(1);
@@ -12,7 +12,6 @@ const fetchBerita = async () => {
     const response = await dataStore.getBerita(currentPage.value);
     berita.value = response.data;
     totalPages.value = response.last_page;
-    console.log("Berita:", berita.value);
   } catch (error) {
     console.error("Error fetching berita:", error);
   }

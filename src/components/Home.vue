@@ -2,29 +2,20 @@
 import { ref, onMounted } from 'vue';
 import { useAuthStore } from '../stores/auth';
 import Sidebar from './Sidebar.vue';
-import TableBerita from './TableBerita.vue';
-import TablePemerintah from './TablePemerintah.vue';
 import Navbar from './Navbar.vue';
 
 const authStore = useAuthStore();
-const activeTable = ref('berita');
 
 onMounted(async () => {
     await authStore.getUser();
 })
-
-const changeTable = (table) => {
-    activeTable.value = table;
-};
 </script>
 
 <template>
     <Navbar />
     <div class="content">
-        <Sidebar @changeTable="changeTable" />
-        <TableBerita v-if="activeTable === 'berita'" />
-        <TablePemerintah v-if="activeTable === 'pemerintah'" />
-        <TableReport v-if="activeTable === 'report'" />
+        <Sidebar />
+        <router-view :key="$route.path" />
     </div>
 </template>
 

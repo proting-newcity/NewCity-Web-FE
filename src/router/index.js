@@ -3,6 +3,8 @@ import { useAuthStore } from "@/stores/auth";
 import Home from "../components/Home.vue";
 import Login from "../components/Login.vue";
 import EditPemerintah from "@/components/EditPemerintah.vue";
+import TablePemerintah from "@/components/TablePemerintah.vue";
+import TableBerita from "@/components/TableBerita.vue";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -10,7 +12,23 @@ const router = createRouter({
     {
       path: "/",
       name: "home",
-      component: Home,
+      component: () => Home,
+      children: [
+        { path: "", redirect: "berita" },
+        { path: "berita", component: TableBerita, name: "berita.table" },
+        {
+          path: "pemerintah",
+          component: TablePemerintah,
+          name: "pemerintah.table",
+          children: [
+            {
+              path: ":id",
+              name: "pemerintah.edit",
+              component: () => EditPemerintah,
+            },
+          ],
+        },
+      ],
       meta: {
         requiresAuth: true,
       },
@@ -20,14 +38,6 @@ const router = createRouter({
       name: "login",
       component: () => Login,
     },
-    {
-      path: "/pemerintah/:id",
-      name: "edit-pemerintah ",
-      component: () => EditPemerintah,
-      meta: {
-        requiresAuth: true,
-      },
-    },
   ],
 });
 
@@ -36,10 +46,8 @@ router.beforeEach(async (to, from, next) => {
 
   if (to.meta.requiresAuth) {
     const isAuthenticated = await authStore.getUser();
-    console.log(!isAuthenticated && to.name != "login");
 
     if (!isAuthenticated && to.name != "login") {
-      console.log(!isAuthenticated && to.name != "login");
       next({ name: "login" });
     } else {
       next();
