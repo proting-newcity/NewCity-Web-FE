@@ -5,7 +5,7 @@ import { useAuthStore } from "../stores/auth";
 const dataStore = useAuthStore();
 const berita = ref([]);
 const currentPage = ref(1);
-const totalPages = ref(0);
+const totalPages = ref(1);
 
 const fetchBerita = async () => {
   try {
@@ -46,7 +46,7 @@ onMounted(() => {
       <button type="button" class="btn btn-success d-flex align-items-center"
         style="border-radius: 30px; padding: 10px 20px; background-color: #588157; font-weight: bolder;"
         @click="navigateToAddBerita">
-        <i class="fas fa-plus me-2" style="font-size: 12px;"></i> Tambah Berita
+        <font-awesome-icon icon="fa-solid fa-plus" style="margin-right:5px !important;" /> Tambah Berita
       </button>
     </div>
 
@@ -75,8 +75,9 @@ onMounted(() => {
               <td>{{ item.updated_at }}</td>
               <td>{{ item.status }}</td>
               <td>
-                <i class="fas fa-pen" @click="editBerita(index)" style="cursor:pointer;"></i>
-                <i class="fas fa-trash-alt ms-3" @click="deleteBerita(index)" style="cursor:pointer;"></i>
+                <font-awesome-icon icon="fa-solid fa-pen" @click="editBerita(index)" style="cursor:pointer;" />
+                <font-awesome-icon icon="fas fa-trash-alt ms-3" @click="deleteBerita(index)"
+                  style="cursor:pointer;margin-left:10px !important;" />
               </td>
             </tr>
           </tbody>

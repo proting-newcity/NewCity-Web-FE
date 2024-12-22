@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from "vue-router";
 import { useAuthStore } from "@/stores/auth";
 import Home from "../components/Home.vue";
+import Login from "../components/Login.vue";
+import EditPemerintah from "@/components/EditPemerintah.vue";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -16,10 +18,15 @@ const router = createRouter({
     {
       path: "/login",
       name: "login",
+      component: () => Login,
+    },
+    {
+      path: "/pemerintah/:id",
+      name: "edit-pemerintah ",
+      component: () => EditPemerintah,
       meta: {
-        requiresAuth: false,
+        requiresAuth: true,
       },
-      component: () => import("../components/Login.vue"),
     },
   ],
 });
@@ -29,14 +36,16 @@ router.beforeEach(async (to, from, next) => {
 
   if (to.meta.requiresAuth) {
     const isAuthenticated = await authStore.getUser();
+    console.log(!isAuthenticated && to.name != "login");
 
-    if (isAuthenticated) {
-      next();
-    } else {
+    if (!isAuthenticated && to.name != "login") {
+      console.log(!isAuthenticated && to.name != "login");
       next({ name: "login" });
+    } else {
+      next();
     }
   } else {
-    next({ name: "home" });
+    next();
   }
 });
 

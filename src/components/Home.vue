@@ -4,7 +4,7 @@ import { useAuthStore } from '../stores/auth';
 import Sidebar from './Sidebar.vue';
 import TableBerita from './TableBerita.vue';
 import TablePemerintah from './TablePemerintah.vue';
-import Navbar from './navbar.vue';
+import Navbar from './Navbar.vue';
 
 const authStore = useAuthStore();
 const activeTable = ref('berita');
@@ -48,7 +48,7 @@ const changeTable = (table) => {
 
 .table-berita,
 .table-pemerintah,
-.table-pemerintah {
+.table-report {
     flex: 1;
     padding: 20px;
 

@@ -5,18 +5,28 @@ import { useAuthStore } from "../stores/auth";
 const dataStore = useAuthStore();
 const pemerintah = ref([]);
 const currentPage = ref(1);
-const totalPages = ref(0);
+const totalPages = ref(1);
 
 const fetchPemerintah = async () => {
   try {
+    pemerintah.value = ref([]);
     const response = await dataStore.getPemerintah(currentPage.value);
     pemerintah.value = response.data;
     totalPages.value = response.last_page;
     console.log("Pemerintah:", response.data);
   } catch (error) {
-    console.error("Error fetching pemerintah:", error);
+    console.error("Error mengambil pemerintah:", error);
   }
 };
+
+const deletePemerintah = async (id) => {
+  try {
+    await dataStore.deletePemerintah(id);
+    fetchPemerintah();
+  } catch (error) {
+    console.error("Error menghapus pemerintah:", error);
+  }
+}
 
 const goToPreviousPage = () => {
   if (currentPage.value > 1) {
@@ -45,8 +55,8 @@ onMounted(() => {
     <div class="d-flex justify-content-start align-items-center my-3 px-3">
       <button type="button" class="btn btn-success d-flex align-items-center"
         style="border-radius: 30px; padding: 10px 20px; background-color: #588157; font-weight: bolder;"
-        @click="navigateToAddBerita">
-        <i class="fas fa-plus me-2" style="font-size: 12px;"></i> Tambah Akun
+        @click="navigateToAddPemerintah">
+        <font-awesome-icon icon="fa-solid fa-plus" style="margin-right:5px !important;" /> Tambah Akun
       </button>
     </div>
 
@@ -57,7 +67,6 @@ onMounted(() => {
         <table class="table table-hover">
           <thead>
             <tr class="table-active">
-              <th>No</th>
               <th>Nama</th>
               <th>Phone Number</th>
               <th>Institusi</th>
@@ -67,14 +76,19 @@ onMounted(() => {
           </thead>
           <tbody>
             <tr v-for="(item, index) in pemerintah" :key="index">
-              <td>{{ index + 1 + (currentPage - 1) * pemerintah.length }}</td>
-              <td>{{ item.user.name }}</td>
+              <td style="display: flex; align-items: center; padding-left: 20px;">
+                <img :src="'http://localhost:8000/' + item.user.foto" alt="Profile"
+                  style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; margin-right: 10px !important;">
+                <div>{{ item.user.name }}</div>
+              </td>
               <td>{{ item.phone }}</td>
               <td>{{ item.institusi.name }}</td>
-              <td>{{ item.status }}</td>
+              <td>{{ item.status ? 'Aktif' : 'Non-Aktif' }}</td>
               <td>
-                <i class="fas fa-pen" @click="editBerita(index)" style="cursor:pointer;"></i>
-                <i class="fas fa-trash-alt ms-3" @click="deleteBerita(index)" style="cursor:pointer;"></i>
+                <RouterLink :to="`/pemerintah/${item.user.id}`"><font-awesome-icon icon="fa-solid fa-pen"
+                    style="cursor:pointer;" /></RouterLink>
+                <font-awesome-icon icon="fas fa-trash-alt ms-3" @click="deletePemerintah(item.user.id)"
+                  style="cursor:pointer; margin-left:10px !important;" />
               </td>
             </tr>
           </tbody>
@@ -100,6 +114,16 @@ onMounted(() => {
 
 
 <style scoped>
+.table th,
+.table td {
+  padding-left: 20px;
+}
+
+.table td {
+  vertical-align: middle;
+}
+
+
 .table-pemerintah {
   height: calc(100vh - 150px);
 }
@@ -109,6 +133,19 @@ onMounted(() => {
   border-collapse: collapse;
   margin: 0;
   padding: 0;
+}
+
+.table-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.table-actions i {
+  color: #588157;
+  font-size: 1.2rem;
+  cursor: pointer;
 }
 
 .table {

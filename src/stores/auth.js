@@ -1,5 +1,6 @@
 import { defineStore } from "pinia";
 import axios from "axios";
+import EditPemerintah from "@/components/EditPemerintah.vue";
 
 export const useAuthStore = defineStore("auth", {
   state: () => ({
@@ -62,6 +63,11 @@ export const useAuthStore = defineStore("auth", {
       }
     },
 
+    async handleLogout() {
+      await axios.post("/logout");
+      this.authUser = null;
+    },
+
     async getBerita(page = 1) {
       try {
         const response = await axios.get(`/api/berita?page=${page}`);
@@ -75,6 +81,54 @@ export const useAuthStore = defineStore("auth", {
     async getPemerintah(page = 1) {
       try {
         const response = await axios.get(`/api/pemerintah?page=${page}`);
+        return response.data;
+      } catch (error) {
+        console.error("Error fetching pemerintah:", error);
+        throw error;
+      }
+    },
+
+    async getPemerintahById(id) {
+      try {
+        const response = await axios.get(`/api/pemerintah/${id}`);
+        return response;
+      } catch (error) {
+        console.error("Error fetching pemerintah:", error);
+        throw error;
+      }
+    },
+
+    async updatePemerintah(data, id) {
+      try {
+        const response = await axios.post(`/api/pemerintah/${id}`, data, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
+        for (var pair of data.entries()) {
+          console.log(pair[0] + ", " + pair[1]);
+        }
+        // this.router.push("/");
+        return response;
+      } catch (error) {
+        console.error("Error fetching pemerintah:", error);
+        throw error;
+      }
+    },
+
+    async deletePemerintah(id) {
+      try {
+        const response = await axios.delete(`/api/pemerintah/${id}`);
+        return response.data;
+      } catch (error) {
+        console.error("Error fetching pemerintah:", error);
+        throw error;
+      }
+    },
+
+    async getInstitusi() {
+      try {
+        const response = await axios.get(`/api/institusi`);
         return response.data;
       } catch (error) {
         console.error("Error fetching pemerintah:", error);
