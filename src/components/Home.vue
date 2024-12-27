@@ -2,8 +2,7 @@
 import { ref, onMounted } from 'vue';
 import { useAuthStore } from '../stores/auth';
 import Sidebar from './Sidebar.vue';
-import TableBerita from './TableBerita.vue';
-import Navbar from './navbar.vue';
+import Navbar from './Navbar.vue';
 
 const authStore = useAuthStore();
 
@@ -16,7 +15,7 @@ onMounted(async () => {
     <Navbar />
     <div class="content">
         <Sidebar />
-        <TableBerita />
+        <router-view :key="$route.path" />
     </div>
 </template>
 
@@ -38,14 +37,15 @@ onMounted(async () => {
 }
 
 .sidebar {
-    overflow: hidden;/* flex: 0 0 20%; Sidebar takes 20% width */
-    max-width: 300px; /* Set max width if needed */
-    background-color: #f4f4f4; /* Example background color */
+    max-width: 300px;
+    background-color: #f4f4f4;
 }
 
-.table-berita {
-    flex: 1; /* Remaining space given to TableBerita */
-    padding: 20px; /* Add padding for neatness */
-    
+.table-berita,
+.table-pemerintah,
+.table-report {
+    flex: 1;
+    padding: 20px;
+
 }
 </style>
