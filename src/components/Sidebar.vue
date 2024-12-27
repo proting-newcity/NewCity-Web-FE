@@ -1,7 +1,7 @@
 <template>
  
   <!-- SIDE BAR -->
-  <div class="col-auto min-vh-100 d-flex align-items-center flex-column sidebar" style="background: #ECEBE6; width: 5%;">
+  <div class="col-auto d-flex align-items-center flex-column sidebar" style="background: #ECEBE6; width: 5%; height: calc(100vh - 90px);">
     <a href="listBerita.html" class="mt-4">
       <div class="flex-column d-flex align-items-center">
         <img src="../assets/logo-berita.png" alt="icon-berita" style="width: 50%;" />

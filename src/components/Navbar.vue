@@ -10,7 +10,7 @@
         </div>
         <form class="d-flex">
           <a href="#" class="container-fluid mx-auto border border-success" style=" border-radius: 50%; padding: 0;">
-            <img class="rounded-circle img-fluid" src="../assets/img-profile.png" style="height: 50px;">
+            <img class="rounded-circle img-fluid" src="../assets/img-profile.png" style="height: 35px;">
           </a>
         </form>
       </div>

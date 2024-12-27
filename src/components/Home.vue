@@ -21,6 +21,9 @@ onMounted(async () => {
 </template>
 
 <style>
+*{
+    overflow: auto;
+}
 .container {
     display: flex;
     flex-direction: column;
@@ -30,11 +33,12 @@ onMounted(async () => {
 .content {
     display: flex;
     width: 100%;
+    overflow: auto;
     flex: 1;
 }
 
 .sidebar {
-    /* flex: 0 0 20%; Sidebar takes 20% width */
+    overflow: hidden;/* flex: 0 0 20%; Sidebar takes 20% width */
     max-width: 300px; /* Set max width if needed */
     background-color: #f4f4f4; /* Example background color */
 }

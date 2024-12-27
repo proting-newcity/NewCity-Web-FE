@@ -9,6 +9,7 @@ const totalPages = ref(0); // Total halaman
 
 // Fungsi untuk mengambil data berita
 const fetchBerita = async () => {
+  berita.value = [];
   try {
     const response = await dataStore.getBerita(currentPage.value);
     berita.value = response.data; // Data berita
@@ -35,6 +36,17 @@ const goToNextPage = () => {
   }
 };
 
+// Fungsi untuk mengubah format tanggal
+const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const hours = String(date.getHours()).padStart(2, '0');
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const year = date.getFullYear().toString(); // Ambil dua digit terakhir tahun
+    return `${day}/${month}/${year}  ${hours}:${minutes}  WIB`;
+  };
+
 onMounted(() => {
   fetchBerita();
 });
@@ -58,7 +70,7 @@ onMounted(() => {
 
     <!-- Table berita -->
     <div class="card-body">
-      <div class="table-responsive" style="border: 1px solid #ECEBE6; border-radius: 10px; height: calc(100vh - 150px);">
+      <div class="table-responsive" style="border: 1px solid #ECEBE6; border-radius: 10px; height: 100%;">
         <table class="table table-hover">
           <thead>
             <tr class="table-active">
@@ -76,8 +88,8 @@ onMounted(() => {
               <td>{{ index + 1 + (currentPage - 1) * berita.length }}</td>
               <td>{{ item.title }}</td>
               <td>{{ item.kategori.name }}</td>
-              <td>Editor Placeholder</td>
-              <td>{{ item.updated_at }}</td>
+              <td>{{ item.user.name }}</td>
+              <td>{{ formatDate(item.updated_at) }}</td>
               <td>{{ item.status }}</td>
               <td>
                 <i class="fas fa-pen" @click="editBerita(index)" style="cursor:pointer;"></i>
@@ -118,7 +130,7 @@ onMounted(() => {
 
 <style scoped>
 .table-berita {
-    height: calc(100vh - 150px); /* Adjust the height according to your layout */
+    height: 100%; /* Adjust the height according to your layout */
     
 }
 
