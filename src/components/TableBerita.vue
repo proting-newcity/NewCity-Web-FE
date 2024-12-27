@@ -1,19 +1,66 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import { useBeritaStore } from "@/stores/berita";
+import Swal from 'sweetalert2';
 
 const dataStore = useBeritaStore();
 const berita = ref([]);
 const currentPage = ref(1);
 const totalPages = ref(1);
+const result = ref();
 
 const fetchBerita = async () => {
+  berita.value = [];
   try {
     const response = await dataStore.getBerita(currentPage.value);
     berita.value = response.data;
     totalPages.value = response.last_page;
   } catch (error) {
     console.error("Error fetching berita:", error);
+  }
+};
+
+const confirmDelete = async (id) => {
+  console.log(id);
+  result.value = await Swal.fire({
+    title: "Anda yakin akan menghapus Berita?",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#588157",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Ya",
+    cancelButtonText: "Tidak",
+  });
+
+  console.log(result.value);
+  if (result.value.isConfirmed) {
+    try {
+      await deleteBerita(id);
+      await Swal.fire({
+        title: "Berhasil",
+        text: "Data berhasil dihapus.",
+        icon: "success",
+        confirmButtonColor: "#588157",
+
+      });
+    } catch (error) {
+      console.error(error);
+      Swal.fire({
+        title: "Gagal",
+        text: "Terjadi kesalahan saat menghapus data.",
+        icon: "error",
+        confirmButtonColor: "#588157",
+      });
+    }
+  }
+}
+
+const deleteBerita = async (id) => {
+  try {
+    await dataStore.deleteBerita(id);
+    fetchBerita();
+  } catch (error) {
+    console.error("Error menghapus berita:", error);
   }
 };
 
@@ -30,6 +77,17 @@ const goToNextPage = () => {
     fetchBerita();
   }
 };
+
+// Fungsi untuk mengubah format tanggal
+const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const hours = String(date.getHours()).padStart(2, '0');
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const year = date.getFullYear().toString(); // Ambil dua digit terakhir tahun
+    return `${day}/${month}/${year}  ${hours}:${minutes}  WIB`;
+  };
 
 onMounted(() => {
   fetchBerita();
@@ -70,13 +128,13 @@ onMounted(() => {
               <td>{{ index + 1 + (currentPage - 1) * berita.length }}</td>
               <td>{{ item.title }}</td>
               <td>{{ item.kategori.name }}</td>
-              <td>Editor Placeholder</td>
-              <td>{{ item.updated_at }}</td>
+              <td>{{ item.user.name }}</td>
+              <td>{{ formatDate(item.updated_at) }}</td>
               <td>{{ item.status }}</td>
               <td>
-                <font-awesome-icon icon="fa-solid fa-pen" @click="editBerita(index)" style="cursor:pointer;" />
-                <font-awesome-icon icon="fas fa-trash-alt ms-3" @click="deleteBerita(index)"
-                  style="cursor:pointer;margin-left:10px !important;" />
+                <font-awesome-icon icon="fa-solid fa-pen" @click="editBerita(item.id)" style="cursor:pointer; color: #588157" />
+                <font-awesome-icon icon="fas fa-trash-alt ms-3" @click="confirmDelete(item.id)"
+                  style="cursor:pointer;margin-left:10px !important; color: #588157" />
               </td>
             </tr>
           </tbody>
@@ -103,8 +161,8 @@ onMounted(() => {
 
 <style scoped>
 .table-berita {
-  height: calc(100vh - 150px);
-
+    height: calc(100vh - 150px); /* Adjust the height according to your layout */
+    
 }
 
 .table-active {
@@ -117,4 +175,4 @@ onMounted(() => {
 .table {
   margin-bottom: 0;
 }
-</style>
+</style>e

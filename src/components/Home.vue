@@ -29,6 +29,7 @@ onMounted(async () => {
 .content {
     display: flex;
     width: 100%;
+    overflow: auto;
     flex: 1;
 }
 

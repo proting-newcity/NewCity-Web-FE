@@ -22,5 +22,15 @@ export const useBeritaStore = defineStore("berita", {
         throw error;
       }
     },
+
+    async deleteBerita(id) {
+      try {
+        const response = await axios.delete(`/api/berita/${id}`);
+        return response.data;
+      } catch (error) {
+        console.error("Error fetching berita:", error);
+        throw error;
+      }
+    },
   },
 });
