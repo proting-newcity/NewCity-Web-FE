@@ -2,12 +2,14 @@
 import { ref, onMounted, watch } from "vue";
 import { useRouter } from "vue-router";
 import { usePemerintahStore } from "@/stores/pemerintah";
+import Swal from 'sweetalert2';
 
 const dataStore = usePemerintahStore();
 const pemerintah = ref([]);
 const currentPage = ref(1);
 const totalPages = ref(1);
 const router = useRouter();
+const result = ref();
 
 const fetchPemerintah = async () => {
   try {
@@ -19,6 +21,40 @@ const fetchPemerintah = async () => {
     console.error("Error mengambil pemerintah:", error);
   }
 };
+
+const confirmDelete = async (id) => {
+  result.value = await Swal.fire({
+    title: "Anda yakin akan menghapus laporan?",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#588157",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Ya",
+    cancelButtonText: "Tidak",
+  });
+
+  console.log(result.value);
+  if (result.value.isConfirmed) {
+    try {
+      await deletePemerintah(id);
+      await Swal.fire({
+        title: "Berhasil",
+        text: "Data berhasil dihapus.",
+        icon: "success",
+        confirmButtonColor: "#588157",
+
+      });
+    } catch (error) {
+      console.error(error);
+      Swal.fire({
+        title: "Gagal",
+        text: "Terjadi kesalahan saat menghapus data.",
+        icon: "error",
+        confirmButtonColor: "#588157",
+      });
+    }
+  }
+}
 
 const deletePemerintah = async (id) => {
   try {
@@ -99,9 +135,10 @@ onMounted(() => {
                 <td>
                   <font-awesome-icon icon="fa-solid fa-pen" style="cursor: pointer; color: #588157"
                     @click="navigateToEditPemerintah(item.user.id)" />
-                  <font-awesome-icon icon="fas fa-trash-alt ms-3" @click="deletePemerintah(item.user.id)"
+                  <font-awesome-icon icon="fas fa-trash-alt ms-3" @click="confirmDelete(item.user.id)"
                     style="cursor: pointer; color: #588157; margin-left: 10px !important;" />
                 </td>
+
               </tr>
             </tbody>
           </table>
