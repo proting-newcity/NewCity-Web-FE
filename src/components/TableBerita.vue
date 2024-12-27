@@ -1,11 +1,13 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import { useBeritaStore } from "@/stores/berita";
+import Swal from 'sweetalert2';
 
 const dataStore = useBeritaStore();
 const berita = ref([]);
 const currentPage = ref(1);
 const totalPages = ref(1);
+const result = ref();
 
 const fetchBerita = async () => {
   berita.value = [];
@@ -15,6 +17,50 @@ const fetchBerita = async () => {
     totalPages.value = response.last_page;
   } catch (error) {
     console.error("Error fetching berita:", error);
+  }
+};
+
+const confirmDelete = async (id) => {
+  console.log(id);
+  result.value = await Swal.fire({
+    title: "Anda yakin akan menghapus Berita?",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#588157",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Ya",
+    cancelButtonText: "Tidak",
+  });
+
+  console.log(result.value);
+  if (result.value.isConfirmed) {
+    try {
+      await deleteBerita(id);
+      await Swal.fire({
+        title: "Berhasil",
+        text: "Data berhasil dihapus.",
+        icon: "success",
+        confirmButtonColor: "#588157",
+
+      });
+    } catch (error) {
+      console.error(error);
+      Swal.fire({
+        title: "Gagal",
+        text: "Terjadi kesalahan saat menghapus data.",
+        icon: "error",
+        confirmButtonColor: "#588157",
+      });
+    }
+  }
+}
+
+const deleteBerita = async (id) => {
+  try {
+    await dataStore.deleteBerita(id);
+    fetchBerita();
+  } catch (error) {
+    console.error("Error menghapus berita:", error);
   }
 };
 
@@ -86,8 +132,8 @@ onMounted(() => {
               <td>{{ formatDate(item.updated_at) }}</td>
               <td>{{ item.status }}</td>
               <td>
-                <font-awesome-icon icon="fa-solid fa-pen" @click="editBerita(index)" style="cursor:pointer; color: #588157" />
-                <font-awesome-icon icon="fas fa-trash-alt ms-3" @click="deleteBerita(index)"
+                <font-awesome-icon icon="fa-solid fa-pen" @click="editBerita(item.id)" style="cursor:pointer; color: #588157" />
+                <font-awesome-icon icon="fas fa-trash-alt ms-3" @click="confirmDelete(item.id)"
                   style="cursor:pointer;margin-left:10px !important; color: #588157" />
               </td>
             </tr>

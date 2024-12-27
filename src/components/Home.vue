@@ -20,9 +20,6 @@ onMounted(async () => {
 </template>
 
 <style>
-*{
-    overflow: auto;
-}
 .container {
     display: flex;
     flex-direction: column;
