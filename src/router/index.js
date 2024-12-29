@@ -5,6 +5,7 @@ import Login from "../components/Login.vue";
 import EditPemerintah from "@/components/EditPemerintah.vue";
 import TablePemerintah from "@/components/TablePemerintah.vue";
 import TableBerita from "@/components/TableBerita.vue";
+import Laporan from "@/components/Report.vue";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -16,6 +17,7 @@ const router = createRouter({
       children: [
         { path: "", redirect: "berita" },
         { path: "berita", component: TableBerita, name: "berita.table" },
+        { path: "laporan", component: Laporan, name: "laporan.table" },
         {
           path: "pemerintah",
           component: TablePemerintah,
