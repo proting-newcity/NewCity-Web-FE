@@ -15,12 +15,12 @@ export default {
       </div>
     </router-link>
 
-    <a style="cursor:pointer;">
+    <router-link :to="{ name: 'laporan.table' }" class="mt-4" style="cursor:pointer;">
       <div class="flex-column d-flex align-items-center">
         <img src="../assets/logo-laporan.png" alt="icon-report" style="width: 50%;" />
         <p class="text-center" style="font-size: 13px; font-weight: 600; color: #3A5A40;">Report</p>
       </div>
-    </a>
+    </router-link>
 
     <router-link :to="{ name: 'pemerintah.table' }" class="mt-4" style="cursor:pointer;">
       <div class="flex-column d-flex align-items-center">
