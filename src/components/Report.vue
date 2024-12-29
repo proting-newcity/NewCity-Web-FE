@@ -4,6 +4,7 @@ import { ref, onMounted } from "vue";
 import { useLaporanStore } from "@/stores/laporan";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap";
+import Swal from "sweetalert2";
 
 const dataStore = useLaporanStore();
 const laporan = ref([]);
@@ -58,6 +59,12 @@ const updateStatusLaporan = async (report, destinatedStatus) => {
   const formData = new FormData();
   formData.append("status", destinatedStatus);
   await dataStore.updateStatusLaporan(formData, report.id);
+  Swal.fire({
+    icon: "success",
+    title: "Status berhasil terupdate",
+    showConfirmButton: false,
+    timer: 1500,
+  });
   fetchLaporan();
   selectedReport.value = null;
 };
