@@ -97,13 +97,18 @@ onMounted(() => {
             <div class="col-2" style="margin: auto">
               <span class="dot">
                 <img
-                  v-if="report.status[0].status == 'Menunggu'"
+                  v-if="
+                    report.status[report.status.length - 1].status ==
+                    'Dalam Proses'
+                  "
                   src="../assets/Accepted.png"
                   alt="Confirmation"
                   style="margin: 14%"
                 />
                 <img
-                  v-else-if="report.status[0].status == 'Ditolak'"
+                  v-else-if="
+                    report.status[report.status.length - 1].status == 'Ditolak'
+                  "
                   src="../assets/Rejected.png"
                   alt="Confirmation"
                   style="margin: 14%"
@@ -152,7 +157,10 @@ onMounted(() => {
             <p class="card-info">{{ formatDate(selectedReport.created_at) }}</p>
             <hr />
             <div
-              v-if="selectedReport.status[0].status == null"
+              v-if="
+                selectedReport.status[selectedReport.status.length - 1]
+                  .status == 'Menunggu'
+              "
               class="card-buttons"
             >
               <button
@@ -163,7 +171,9 @@ onMounted(() => {
               </button>
               <button
                 class="btn-confirm"
-                @click.prevent="updateStatusLaporan(selectedReport, 'Menunggu')"
+                @click.prevent="
+                  updateStatusLaporan(selectedReport, 'Dalam Proses')
+                "
               >
                 Konfirmasi
               </button>
