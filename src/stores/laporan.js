@@ -25,7 +25,7 @@ export const useLaporanStore = defineStore("laporan", {
 
         async updateStatusLaporan(data, id) {
             try {
-                const response = await axios.post(`/api/report/status/admin/${id}`, data, {
+                const response = await axios.post(`/api/report/status/${id}`, data, {
                     headers: {
                         "Content-Type": "multipart/form-data",
                     },
