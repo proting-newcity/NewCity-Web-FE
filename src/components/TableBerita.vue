@@ -8,11 +8,24 @@ const berita = ref([]);
 const currentPage = ref(1);
 const totalPages = ref(1);
 const result = ref();
+let searchQuery = ref("");
 
 const fetchBerita = async () => {
   berita.value = [];
   try {
     const response = await dataStore.getBerita(currentPage.value);
+    berita.value = response.data;
+    totalPages.value = response.last_page;
+  } catch (error) {
+    console.error("Error fetching berita:", error);
+  }
+};
+
+const searchBerita = async () => {
+  berita.value = [];
+  currentPage.value = 1;
+  try {
+    const response = await dataStore.searchBerita(currentPage.value, searchQuery.value);
     berita.value = response.data;
     totalPages.value = response.last_page;
   } catch (error) {
@@ -78,6 +91,8 @@ const goToNextPage = () => {
   }
 };
 
+
+
 // Fungsi untuk mengubah format tanggal
 const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -99,18 +114,31 @@ onMounted(() => {
 <template>
   <div class="table-berita">
     <!-- Button Tambah Berita -->
-    <div class="d-flex justify-content-start align-items-center my-3 px-3">
-      <button type="button" class="btn btn-success d-flex align-items-center"
+    
+    <div class="d-flex justify-content-between align-items-center my-3 px-3">
+      
+        <button type="button" class="btn btn-success d-flex align-items-center"
         style="border-radius: 30px; padding: 10px 20px; background-color: #588157; font-weight: bolder;"
         @click="navigateToAddBerita">
         <font-awesome-icon icon="fa-solid fa-plus" style="margin-right:5px !important;" /> Tambah Berita
-      </button>
+        </button>
+        <div class="d-flex " id="search-bar">
+        <i class="pi pi-search"></i>
+        <input 
+          v-on:keyup.enter="searchBerita"
+          type="text"
+          v-model="searchQuery"
+          placeholder="Cari Laporan..."
+        />
+      
+      </div>
+      
     </div>
 
     <!-- Table berita -->
     <div class="card-body">
       <div class="table-responsive"
-        style="border: 1px solid #ECEBE6; border-radius: 10px; height: calc(100vh - 150px);">
+        style="border: 1px solid #ECEBE6; border-radius: 10px; height: calc(100vh - 280px);">
         <table class="table table-hover">
           <thead>
             <tr class="table-active">
@@ -174,5 +202,24 @@ onMounted(() => {
 
 .table {
   margin-bottom: 0;
+}
+
+#search-bar {
+  display: flex;
+  padding: 0 24px;
+  align-items: center;
+  background-color: #f8f8f6;
+  border-radius: 25px;
+  height: 50px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#search-bar input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 16px;
+  padding-left: 10px;
 }
 </style>e

@@ -12,20 +12,16 @@ onMounted(async () => {
 </script>
 
 <template>
-    <Navbar />
-    <div class="content">
+    <div class="home">
+        <Navbar />
+        <div class="content">
         <Sidebar />
         <router-view :key="$route.path" />
+        </div>
     </div>
 </template>
 
 <style>
-.container {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-}
-
 .content {
     display: flex;
     width: 100%;
@@ -43,6 +39,5 @@ onMounted(async () => {
 .table-report {
     flex: 1;
     padding: 20px;
-
 }
 </style>

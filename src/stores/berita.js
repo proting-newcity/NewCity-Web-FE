@@ -32,5 +32,15 @@ export const useBeritaStore = defineStore("berita", {
         throw error;
       }
     },
+
+    async searchBerita(page = 1, searchQuery) {
+      try {
+        const response = await axios.get(`/api/berita/search?page=${page}&search=${searchQuery}`);
+        return response.data;
+      } catch (error) {
+        console.error("Error fetching berita:", error);
+        throw error;
+      }
+    },
   },
 });
