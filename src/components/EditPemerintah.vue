@@ -72,6 +72,12 @@
         }
     };
 
+    const navigateToTablePemerintah = (id) => {
+        router.replace({ name: "pemerintah.table" }).catch((err) => {
+            console.error("Navigation failed:", err);
+        });
+    };
+
     onMounted(async () => {
         fetchInstitusi();
         fetchPemerintah();
@@ -147,7 +153,8 @@
 
                             <!-- Button Section -->
                             <div class="d-flex justify-content-end mt-4">
-                                <button type="button" class="btn btn-outline-secondary me-2">Batal</button>
+                                <button type="button" class="btn btn-outline-secondary me-2"
+                                    @click="navigateToTablePemerintah">Batal</button>
                                 <button type="submit" class="btn btn-success"
                                     @click.prevent="updatePemerintah">Simpan</button>
                             </div>

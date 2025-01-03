@@ -18,10 +18,7 @@ const authStore = useAuthStore();
         <div class="navbar-nav me-auto mb-2 mb-lg-0">
         </div>
         <form class="d-flex">
-          <a @click="authStore.handleLogout" href="#" class="container-fluid mx-auto border border-success"
-            style=" border-radius: 50%; padding: 0;">
-            <img class="rounded-circle img-fluid" src="../assets/img-profile.png" style="height: 50px;">
-          </a>
+          <button type="submit" class="btn btn-success" @click.prevent="authStore.handleLogout">Logout</button>
         </form>
       </div>
     </div>
