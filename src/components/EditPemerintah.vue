@@ -79,15 +79,16 @@
 </script>
 
     <template>
-        <div class="col md-12 bg-white p-5">
+        <div class="col md-12 bg-white">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col bg-white p-5">
+                    <div class="col bg-white">
                         <div class="row">
                             <!-- Photo Upload Section -->
                             <div class="row justify-content-md-center">
                                 <div class=" photo-upload border border-success rounded-circle d-flex flex-column
-                                justify-content-center align-items-center" @click="$refs.fileInput.click()">
+                                justify-content-center align-items-center" @click="$refs.fileInput.click()"
+                                    style="height: 400px;width: 400px;">
                                     <input type="file" ref="fileInput" class="d-none" @change="handleImageUpload" />
                                     <!-- Display the current photo or a placeholder -->
                                     <img v-if="currentFoto"
@@ -112,7 +113,7 @@
                     </div>
 
                     <!-- Form Section -->
-                    <div class="col bg-white p-5">
+                    <div class="col bg-white">
                         <form @submit.prevent="updatePemerintah">
                             <div class="row mb-3">
                                 <div class="row">
