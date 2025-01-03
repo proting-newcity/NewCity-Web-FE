@@ -33,6 +33,18 @@ export const usePemerintahStore = defineStore("pemerintah", {
       }
     },
 
+    async searchPemerintah(page = 1, searchQuery) {
+      try {
+        const response = await axios.get(
+          `/api/pemerintah/search?page=${page}&search=${searchQuery}`
+        );
+        return response.data;
+      } catch (error) {
+        console.error("Error fetching pemerintah:", error);
+        throw error;
+      }
+    },
+
     async updatePemerintah(data, id) {
       try {
         const response = await axios.post(`/api/pemerintah/${id}`, data, {

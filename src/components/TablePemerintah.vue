@@ -10,6 +10,7 @@ const currentPage = ref(1);
 const totalPages = ref(1);
 const router = useRouter();
 const result = ref();
+let searchQuery = ref("");
 
 const fetchPemerintah = async () => {
   try {
@@ -19,6 +20,18 @@ const fetchPemerintah = async () => {
     totalPages.value = response.last_page;
   } catch (error) {
     console.error("Error mengambil pemerintah:", error);
+  }
+};
+
+const searchPemerintah = async () => {
+  pemerintah.value = [];
+  currentPage.value = 1;
+  try {
+    const response = await dataStore.searchPemerintah(currentPage.value, searchQuery.value);
+    pemerintah.value = response.data;
+    totalPages.value = response.last_page;
+  } catch (error) {
+    console.error("Error fetching pemerintah:", error);
   }
 };
 
@@ -101,14 +114,20 @@ onMounted(() => {
   <div class="table-pemerintah">
     <!-- Table Pemerintah Content -->
     <div v-if="!$route.params.id">
-      <div class="d-flex justify-content-start align-items-center my-3 px-3">
+
+      <div class="d-flex justify-content-between align-items-center my-3 px-3">
         <button type="button" class="btn btn-success d-flex align-items-center"
           style="border-radius: 30px; padding: 10px 20px; background-color: #588157; font-weight: bolder;"
           @click="navigateToAddPemerintah">
-          <font-awesome-icon icon="fa-solid fa-plus" style="margin-right: 5px !important;" />
-          Tambah Akun
+          <font-awesome-icon icon="fa-solid fa-plus" style="margin-right:5px !important;" /> Tambah Akun
         </button>
+
+        <div class="d-flex " id="search-bar">
+          <i class="pi pi-search"></i>
+          <input v-on:keyup.enter="searchPemerintah" type="text" v-model="searchQuery" placeholder="Cari Laporan..." />
+        </div>
       </div>
+
       <div class="card-body">
         <div class="table-responsive"
           style="border: 1px solid #ECEBE6; border-radius: 10px; height: calc(100vh - 150px);">
@@ -197,5 +216,24 @@ onMounted(() => {
 
 .table {
   margin-bottom: 0;
+}
+
+#search-bar {
+  display: flex;
+  padding: 0 24px;
+  align-items: center;
+  background-color: #f8f8f6;
+  border-radius: 25px;
+  height: 50px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#search-bar input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 16px;
+  padding-left: 10px;
 }
 </style>
