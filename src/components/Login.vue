@@ -32,9 +32,7 @@ const authenticateUser = () => {
                 style="background: #3A5A40;">
                 <div class="d-flex flex-column justify-content-center align-items-center title mb-5">
                     <p class="text-white text-wrap text-center fs-1 mb-0" style="font-weight: 600;">Selamat Datang</p>
-                    <small class="text-white text-wrap mt-0" style="width: 21rem;">Masukkan Username dan Password untuk
-                        masuk ke
-                        akun Anda!</small>
+                    <small class="text-white text-wrap mt-0" style="width: 21rem;">Masukkan Username dan Password Anda!</small>
                 </div>
 
                 <div id="loginForm" class="mb-5 input">
