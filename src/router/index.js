@@ -13,7 +13,7 @@ const router = createRouter({
     {
       path: "/",
       name: "home",
-      component: () => Home,
+      component:  Home,
       children: [
         { path: "", redirect: "berita" },
         { path: "berita", component: TableBerita, name: "berita.table" },
@@ -26,7 +26,7 @@ const router = createRouter({
             {
               path: ":id",
               name: "pemerintah.edit",
-              component: () => EditPemerintah,
+              component:  EditPemerintah,
             },
           ],
         },
@@ -38,7 +38,7 @@ const router = createRouter({
     {
       path: "/login",
       name: "login",
-      component: () => Login,
+      component:  Login,
     },
   ],
 });

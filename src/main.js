@@ -1,10 +1,10 @@
-import "./assets/main.css";
+import "@/assets/main.css";
 import "bootstrap/dist/css/bootstrap.css";
 import { createApp, markRaw } from "vue";
 import { createPinia } from "pinia";
-import App from "./App.vue";
-import router from "./router";
-import "./axios";
+import App from "@/App.vue";
+import router from "@/router";
+import "@/axios";
 
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
