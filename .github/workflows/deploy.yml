@@ -1,0 +1,33 @@
+name: Deploy Laravel to Azure VM
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup SSH Key
+        run: |
+          echo "$SSH_PRIVATE_KEY" > private_key
+          chmod 600 private_key
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.AZURE_SSH_KEY }}
+
+      - name: Deploy to Azure VM
+        run: |
+          ssh -o StrictHostKeyChecking=no -i private_key ${{ secrets.AZURE_USER }}@${{ secrets.AZURE_HOST }} << 'EOF'
+            cd ${{ secrets.BUILD_PATH }}
+            git pull origin master
+            npm install --production
+            npm run build
+            sudo cp -r dist/* ${{ secrets.DEPLOY_PATH }}
+            sudo systemctl restart apache2  # Change to nginx if using Nginx
+          EOF
