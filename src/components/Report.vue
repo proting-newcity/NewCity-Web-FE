@@ -23,12 +23,12 @@ const fetchLaporan = async () => {
 
 function selectReport(report) {
   // Pilih laporan dan tampilkan di kolom 2
-  this.selectedReport = report;
+  selectedReport.value = report;
 }
 
 function isSelected(report) {
   // Cek apabila laporan sudah terpilih
-  return this.selectedReport === report;
+  return selectedReport.value === report;
 }
 
 function scrollToTop() {
