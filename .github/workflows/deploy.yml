@@ -26,7 +26,7 @@ jobs:
           ssh -o StrictHostKeyChecking=no -i private_key ${{ secrets.AZURE_USER }}@${{ secrets.AZURE_HOST }} << 'EOF'
             cd ${{ secrets.BUILD_PATH }}
             sudo git pull origin master
-            sudo npm install --production
+            sudo npm install
             sudo npm run build
             sudo cp -r dist/* ${{ secrets.DEPLOY_PATH }}
             sudo systemctl restart apache2  # Change to nginx if using Nginx
