@@ -2,6 +2,7 @@
     import { ref, onMounted } from 'vue';
     import { usePemerintahStore } from '@/stores/pemerintah';
     import { useRoute, useRouter } from 'vue-router';
+    import axios from '@/axios.js';
 
     const route = useRoute();
     const router = useRouter();
@@ -21,13 +22,18 @@
         try {
             const response = await dataStore.getPemerintahById(id);
             const data = response.data;
-            name.value = data.user.name;
-            username.value = data.user.username;
+            name.value = data.name;
+            username.value = data.username;
             phone.value = data.phone;
-            institusi_id.value = data.institusi.id;
+            institusi_id.value = data.institusi_id;
             status.value = data.status;
-            currentFoto.value = data.user.foto;
-            console.log(currentFoto.value)
+            currentFoto.value = data.foto;
+            
+            if (data.foto && data.foto.startsWith('storage/')) {
+                currentFoto.value = `${axios.defaults.baseURL}/${data.foto}`;
+            } else {
+                currentFoto.value = data.foto;
+            }
         } catch (error) {
             console.error("Error mengambil pemerintah:", error);
         }
@@ -97,9 +103,7 @@
                                     style="height: 400px;width: 400px;">
                                     <input type="file" ref="fileInput" class="d-none" @change="handleImageUpload" />
                                     <!-- Display the current photo or a placeholder -->
-                                    <img v-if="currentFoto"
-                                        :src="currentFoto.startsWith(`storage/`) ? `http://localhost:8000/${currentFoto}` : currentFoto"
-                                        alt="Profile" class="photo-image" />
+                                    <img v-if="currentFoto" :src="currentFoto" alt="Profile" class="photo-image" />
                                     <span v-if="!currentFoto">Unggah Foto</span>
                                 </div>
                             </div>
@@ -136,8 +140,8 @@
                                     <label for="institusi" class="form-label">Institusi</label>
                                     <select v-model="institusi_id" class="form-select" id="institusi">
                                         <option value="" disabled>Pilih Institusi</option>
-                                        <option v-for="institusi in institusiList" :key="institusi.id"
-                                            :value="institusi.id">
+                                        <option v-for="institusi in institusiList" :key="institusi_id"
+                                            :value="institusi_id">
                                             {{ institusi.name }}
                                         </option>
                                     </select>
