@@ -3,6 +3,7 @@ import { ref, onMounted, watch } from "vue";
 import { useRouter } from "vue-router";
 import { usePemerintahStore } from "@/stores/pemerintah";
 import Swal from 'sweetalert2';
+import axios from '@/axios.js';
 
 const dataStore = usePemerintahStore();
 const pemerintah = ref([]);
@@ -33,6 +34,13 @@ const searchPemerintah = async () => {
   } catch (error) {
     console.error("Error fetching pemerintah:", error);
   }
+};
+
+const getFotoUrl = (fotoPath) => {
+  if (!fotoPath) return null;
+  return fotoPath.startsWith("storage/")
+    ? `${axios.defaults.baseURL}/${fotoPath}`
+    : fotoPath;
 };
 
 const confirmDelete = async (id) => {
@@ -144,7 +152,7 @@ onMounted(() => {
             <tbody>
               <tr v-for="(item, index) in pemerintah" :key="index">
                 <td style="display: flex; align-items: center; padding-left: 20px;">
-                  <img :src="'http://localhost:8000/' + item.user.foto" alt="Profile"
+                  <img v-if="item.user.foto" :src="getFotoUrl(item.user.foto)" alt="Profile"
                     style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; margin-right: 10px !important;" />
                   <div>{{ item.user.name }}</div>
                 </td>

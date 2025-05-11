@@ -5,6 +5,7 @@ import { useLaporanStore } from "@/stores/laporan";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap";
 import Swal from "sweetalert2";
+import axios from '@/axios.js';
 
 const dataStore = useLaporanStore();
 const laporan = ref([]);
@@ -67,6 +68,13 @@ const updateStatusLaporan = async (report, destinatedStatus) => {
   });
   fetchLaporan();
   selectedReport.value = null;
+};
+
+const getFotoUrl = (fotoPath) => {
+  if (!fotoPath) return null;
+  return fotoPath.startsWith("storage/")
+    ? `${axios.defaults.baseURL}/${fotoPath}`
+    : fotoPath;
 };
 
 onMounted(() => {
@@ -142,11 +150,7 @@ onMounted(() => {
     <div class="flex-fill ms-3" id="column-2">
       <div v-if="selectedReport">
         <form @submit.prevent="updateStatusLaporan(selectedReport)">
-          <img
-            class="card-img-top img-fluid"
-            :src="'http://127.0.0.1:8000/' + selectedReport.foto"
-            alt="Foto Laporan"
-          />
+          <img v-if="currentFoto" :src="currentFoto" alt="Foto Laporan" class="card-img-top img-fluid" />
           <div class="card-content">
             <h3 class="card-title">{{ selectedReport.judul }}</h3>
             <p class="card-info-title">Permasalahan</p>
