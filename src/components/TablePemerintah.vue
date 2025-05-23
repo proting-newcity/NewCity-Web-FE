@@ -40,7 +40,7 @@ const getFotoUrl = (fotoPath) => {
   if (!fotoPath) return null;
   return fotoPath.startsWith("storage/")
     ? `${axios.defaults.baseURL}/${fotoPath}`
-    : fotoPath;
+    : '../assets/img-profile.png';
 };
 
 const confirmDelete = async (id) => {

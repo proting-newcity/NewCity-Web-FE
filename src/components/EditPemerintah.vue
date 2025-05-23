@@ -101,7 +101,7 @@
                                 <div class=" photo-upload border border-success rounded-circle d-flex flex-column
                                 justify-content-center align-items-center" @click="$refs.fileInput.click()"
                                     style="height: 400px;width: 400px;">
-                                    <input type="file" ref="fileInput" class="d-none" @change="handleImageUpload" />
+                                    <input type="file" accept="image/*" ref="fileInput" class="d-none" @change="handleImageUpload" />
                                     <!-- Display the current photo or a placeholder -->
                                     <img v-if="currentFoto" :src="currentFoto" alt="Profile" class="photo-image" />
                                     <span v-if="!currentFoto">Unggah Foto</span>
