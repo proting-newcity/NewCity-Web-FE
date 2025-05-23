@@ -6,6 +6,9 @@ import EditPemerintah from "@/components/EditPemerintah.vue";
 import TablePemerintah from "@/components/TablePemerintah.vue";
 import TableBerita from "@/components/TableBerita.vue";
 import Laporan from "@/components/Report.vue";
+import AddBerita from "@/components/AddBerita.vue";
+import EditBerita from "@/components/EditBerita.vue";
+import AddPemerintah from "@/components/AddPemerintah.vue";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -13,20 +16,29 @@ const router = createRouter({
     {
       path: "/",
       name: "home",
-      component:  Home,
+      component: Home,
       children: [
         { path: "", redirect: "berita" },
-        { path: "berita", component: TableBerita, name: "berita.table" },
+        {
+          path: "berita",
+          component: TableBerita,
+          name: "berita.table",
+          children: [
+            { path: "add", name: "berita.add", component: AddBerita },
+            { path: ":id", name: "berita.edit", component: EditBerita },
+          ],
+        },
         { path: "laporan", component: Laporan, name: "laporan.table" },
         {
           path: "pemerintah",
           component: TablePemerintah,
           name: "pemerintah.table",
           children: [
+            { path: "add", name: "pemerintah.add", component: AddPemerintah },
             {
               path: ":id",
               name: "pemerintah.edit",
-              component:  EditPemerintah,
+              component: EditPemerintah,
             },
           ],
         },
@@ -38,7 +50,7 @@ const router = createRouter({
     {
       path: "/login",
       name: "login",
-      component:  Login,
+      component: Login,
     },
   ],
 });

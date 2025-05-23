@@ -23,7 +23,7 @@ const authenticateUser = () => {
             <div class="col-md-6 d-flex justify-content-center align-items-center flex-column min-vh-100 left-box"
                 style="background: #fafafa; width: 65%;">
                 <div class="feature-image mb-3">
-                    <img src="../assets/logo-NewCity.png" class="logo-img" style="width: 500px;" />
+                    <img src="../assets/logo-NewCity.png" class="logo-img" alt="logo" style="width: 500px;" />
                 </div>
             </div>
 

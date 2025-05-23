@@ -4,6 +4,7 @@ import { useRouter } from "vue-router";
 import { usePemerintahStore } from "@/stores/pemerintah";
 import Swal from 'sweetalert2';
 import axios from '@/axios.js';
+import imgProfile from '@/assets/img-profile.png';
 
 const dataStore = usePemerintahStore();
 const pemerintah = ref([]);
@@ -15,7 +16,7 @@ let searchQuery = ref("");
 
 const fetchPemerintah = async () => {
   try {
-    pemerintah.value = ref([]);
+    pemerintah.value = [];
     const response = await dataStore.getPemerintah(currentPage.value);
     pemerintah.value = response.data;
     totalPages.value = response.last_page;
@@ -37,7 +38,10 @@ const searchPemerintah = async () => {
 };
 
 const getFotoUrl = (fotoPath) => {
-  if (!fotoPath) return null;
+  if (!fotoPath || fotoPath === '') {
+    return imgProfile;
+  }
+
   return fotoPath.startsWith("storage/")
     ? `${axios.defaults.baseURL}/${fotoPath}`
     : fotoPath;
@@ -100,6 +104,10 @@ const goToNextPage = () => {
   }
 };
 
+const navigateToAddPemerintah = () => {
+  router.push({ name: 'pemerintah.add' });
+};
+
 const navigateToEditPemerintah = (id) => {
   router.push({ name: "pemerintah.edit", params: { id } }).catch((err) => {
     console.log(err)
@@ -121,7 +129,7 @@ onMounted(() => {
 <template>
   <div class="table-pemerintah">
     <!-- Table Pemerintah Content -->
-    <div v-if="!$route.params.id">
+    <div v-if="$route.path == '/pemerintah'">
 
       <div class="d-flex justify-content-between align-items-center my-3 px-3">
         <button type="button" class="btn btn-success d-flex align-items-center"
@@ -152,7 +160,7 @@ onMounted(() => {
             <tbody>
               <tr v-for="(item, index) in pemerintah" :key="index">
                 <td style="display: flex; align-items: center; padding-left: 20px;">
-                  <img v-if="item.user.foto" :src="getFotoUrl(item.user.foto)" alt="Profile"
+                  <img v-if="item.user" :src="getFotoUrl(item.user.foto)" alt="Profile"
                     style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; margin-right: 10px !important;" />
                   <div>{{ item.user.name }}</div>
                 </td>

@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted } from 'vue';
+import { onMounted } from 'vue';
 import { useAuthStore } from '../stores/auth';
 import Sidebar from './Sidebar.vue';
 import Navbar from './Navbar.vue';
