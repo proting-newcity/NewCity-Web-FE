@@ -11,6 +11,7 @@
     const dataStore = usePemerintahStore();
     const name = ref('');
     const username = ref('');
+    const password = ref('');
     const phone = ref('');
     const institusi_id = ref(null);
     const institusiList = ref([]);
@@ -52,6 +53,7 @@
         const formData = new FormData();
         formData.append('name', name.value);
         formData.append('username', username.value);
+        formData.append('password', password.value);
         formData.append('phone', phone.value);
         formData.append('institusi_id', institusi_id.value);
         formData.append('status', status.value);
@@ -115,7 +117,7 @@
                                 </div>
                                 <div class="row">
                                     <label for="password" class="form-label">Password</label>
-                                    <input type="password" class="form-control" id="password"
+                                    <input v-model="password" type="password" class="form-control" id="password"
                                         placeholder="Masukkan Password">
                                 </div>
                             </div>

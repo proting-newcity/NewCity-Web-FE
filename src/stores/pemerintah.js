@@ -45,6 +45,20 @@ export const usePemerintahStore = defineStore("pemerintah", {
       }
     },
 
+    async postPemerintah(data) {
+      try {
+        const response = await axios.post(`/api/pemerintah/`, data, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
+        return response;
+      } catch (error) {
+        console.error("Error post pemerintah:", error);
+        throw error;
+      }
+    },
+
     async updatePemerintah(data, id) {
       try {
         const response = await axios.post(`/api/pemerintah/${id}`, data, {
@@ -54,7 +68,7 @@ export const usePemerintahStore = defineStore("pemerintah", {
         });
         return response;
       } catch (error) {
-        console.error("Error fetching pemerintah:", error);
+        console.error("Error update pemerintah:", error);
         throw error;
       }
     },

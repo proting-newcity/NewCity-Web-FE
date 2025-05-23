@@ -8,6 +8,7 @@ import TableBerita from "@/components/TableBerita.vue";
 import Laporan from "@/components/Report.vue";
 import AddBerita from "@/components/AddBerita.vue";
 import EditBerita from "@/components/EditBerita.vue";
+import AddPemerintah from "@/components/AddPemerintah.vue";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -33,6 +34,7 @@ const router = createRouter({
           component: TablePemerintah,
           name: "pemerintah.table",
           children: [
+            { path: "add", name: "pemerintah.add", component: AddPemerintah },
             {
               path: ":id",
               name: "pemerintah.edit",
